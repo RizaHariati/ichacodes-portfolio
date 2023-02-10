@@ -7,30 +7,29 @@ import { aboutData, projects } from "../data/data";
 import SlideInfo from "./homeComponents/SlideInfo";
 import { useState } from "react";
 import { useInView } from "react-intersection-observer";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faPaperPlane } from "@fortawesome/free-regular-svg-icons";
 
 type Props = {};
-
+const options = {
+  root: null,
+  rootMargin: "0% 0px 0% 0px",
+  threshold: 0.5,
+};
 const Home = (props: Props) => {
   const {
     state: { portfolioImages },
   } = useGlobalContext();
   // const myRef: any = useRef(null);
-  const { ref: myRef, inView: isVisible } = useInView({
+  const { ref: mainRef, inView: ismainVisible } = useInView({
     root: null,
-    rootMargin: "0px 0px -50% 0px",
-    threshold: 0.1,
+    rootMargin: "0% 0px 0% 0px",
+    threshold: 0.5,
   });
-
-  const { ref: myRef2, inView: isVisible2 } = useInView({
-    root: null,
-    rootMargin: "0px 0px -50% 0px",
-    threshold: 0.2,
-  });
-  const { ref: myRef3, inView: isVisible3 } = useInView({
-    root: null,
-    rootMargin: "0px 0px -50% 0px",
-    threshold: 0.1,
-  });
+  const { ref: myRef, inView: isVisible } = useInView(options);
+  const { ref: myRef2, inView: isVisible2 } = useInView(options);
+  const { ref: myRef3, inView: isVisible3 } = useInView(options);
+  const { ref: myRef4, inView: isVisible4 } = useInView(options);
   if (
     !portfolioImages ||
     (portfolioImages && Object.keys(portfolioImages).length < 1)
@@ -39,8 +38,8 @@ const Home = (props: Props) => {
   } else {
     return (
       <div className="main-page-container">
-        <div className="welcome-container">
-          <div className="h-fit md:h-full w-fit md:w-full col-span-1 md:col-span-2">
+        <div className="welcome-container" ref={mainRef}>
+          <div className="main-page-image-container">
             <div className="main-page-image">
               <StaticImage
                 src="../../src/images/profile_pic.jpg"
@@ -53,17 +52,183 @@ const Home = (props: Props) => {
               />
             </div>
           </div>
-          <div className="main-page-text">
+          <div className="main-page-text animate-mainImageX">
             <h2 className="text-right">Hello, I'm Riza Hariati </h2>{" "}
-            <h2 className="text-right">(依扎 / Icha)</h2>
-            <h3>
-              Whether it's for personal purpose or for small business, I would
-              love to build interesting reliable websites and apps that reflect
-              your goals and personality.
+            <h2 className="text-right text-accent">(依扎 / Icha)</h2>
+            <h3 className="leading-6 sm:leading-8">
+              Whether it's for personal purpose or for small business, it will
+              be my pleasure to create interesting reliable websites and apps
+              that reflect your goals and personality.
             </h3>
-            <h3>It will be my pleasure to create them for you.</h3>
           </div>
         </div>
+        {/* --------------------------- project 1 -------------------------- */}
+        <div
+          className={
+            isVisible && !ismainVisible
+              ? "project-container h-screen 2xl:h-5/6 "
+              : "project-container h-96"
+          }
+        >
+          <div className="pb-line-cont-main">
+            <h2 className="hidden sm:block">My projects</h2>
+            <div className="flex flex-col h-full w-full">
+              <div className="w-full h-full">
+                <h2 className=" flex justify-center items-center animate-pulse h-full sm:hidden">
+                  My projects
+                </h2>
+              </div>
+              <div className="w-full h-full rounded-tr-lg border-t-4 border-r-4 border-textLit"></div>
+            </div>
+          </div>
+          <div className="project-content-closed">
+            <div className="project-content-inside px-2 md:gap-20">
+              <div className="flex flex-col sm:flex-row w-full h-full justify-start items-start">
+                <div
+                  className={
+                    isVisible && !ismainVisible
+                      ? "h-48 sm:h-80 2xl:h-96 sm:w-full transition-all"
+                      : " w-full h-48  transition-all"
+                  }
+                  ref={myRef}
+                >
+                  <StaticImage
+                    src="../../src/images/bayarplanner_monitor.jpg"
+                    alt="bayarplanner_monitor"
+                    layout="constrained"
+                    placeholder="dominantColor"
+                    loading="lazy"
+                    objectFit="contain"
+                    className="h-full"
+                  />
+                </div>
+                <div className="h-3/5 sm:h-full w-full bg-slate-300 bg-opacity-20 p-3 mt-auto "></div>
+              </div>
+            </div>
+          </div>
+          <div className="pb-line-cont">
+            <div className="pb-line "></div>
+          </div>
+        </div>
+        {/* --------------------------- project 2-------------------------- */}
+        <div
+          className={
+            isVisible2 && !isVisible
+              ? "project-container h-5/6 2xl:h-4/6 "
+              : "project-container "
+          }
+        >
+          <div className="pb-line-cont">
+            <div className="pb-line "></div>
+          </div>
+          <div className="project-content-closed">
+            <div className="project-content-inside">
+              <div className="flex flex-col sm:flex-row w-full h-full justify-start items-start">
+                <div className="h-3/5 sm:h-full w-full bg-slate-300 bg-opacity-20 order-2 "></div>
+                <div
+                  className={
+                    isVisible2 && !isVisible
+                      ? "h-48 sm:h-80 2xl:h-96 sm:w-full transition-all  order-1 sm:order-3"
+                      : " w-full h-48  transition-all  order-1 sm:order-3"
+                  }
+                  ref={myRef2}
+                >
+                  <StaticImage
+                    src="../../src/images/sudahnonton_monitor.jpg"
+                    alt="sudahnonton_monitor"
+                    layout="constrained"
+                    placeholder="dominantColor"
+                    loading="lazy"
+                    objectFit="contain"
+                    className="h-full"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+          <div className="pb-line-cont">
+            <div className="pb-line"></div>
+          </div>
+        </div>{" "}
+        {/* --------------------------- project 3-------------------------- */}
+        <div
+          className={
+            isVisible3 && !isVisible2
+              ? "project-container h-5/6 2xl:h-4/6 "
+              : "project-container "
+          }
+        >
+          <div className="pb-line-cont">
+            <div className="pb-line "></div>
+          </div>
+          <div className="project-content-closed">
+            <div className="project-content-inside">
+              <div className="flex flex-col sm:flex-row w-full h-full justify-start items-start">
+                <div
+                  className={
+                    isVisible3 && !isVisible2
+                      ? "h-48 sm:h-80 2xl:h-96 sm:w-full transition-all"
+                      : " w-full h-48  transition-all"
+                  }
+                  ref={myRef3}
+                >
+                  <StaticImage
+                    src="../../src/images/rs-uripsumoharjo_monitor.jpg"
+                    alt="rs-uripsumoharjo_monitor"
+                    layout="constrained"
+                    placeholder="dominantColor"
+                    loading="lazy"
+                    objectFit="contain"
+                    className="h-full"
+                  />
+                </div>
+                <div className="h-3/5 sm:h-full w-full bg-slate-300 bg-opacity-20  "></div>
+              </div>
+            </div>
+          </div>
+          <div className="pb-line-cont">
+            <div className="pb-line"></div>
+          </div>
+        </div>
+        {/* --------------------------- project 4-------------------------- */}
+        <div
+          className={
+            isVisible4 && !isVisible3
+              ? "project-container h-5/6 2xl:h-4/6 "
+              : "project-container "
+          }
+        >
+          <div className="pb-line-cont">
+            <div className="pb-line "></div>
+          </div>
+          <div className="project-content-closed">
+            <div className="project-content-inside">
+              <div className="flex flex-col sm:flex-row w-full h-full justify-start items-start">
+                <div className="h-3/5 sm:h-full w-full bg-slate-300 bg-opacity-20  order-2"></div>
+                <div
+                  className={
+                    isVisible4 && !isVisible3
+                      ? "h-48 sm:h-80 2xl:h-96 sm:w-full transition-all order-1  sm:order-3"
+                      : " w-full h-48  transition-all order-1 sm:order-3"
+                  }
+                  ref={myRef4}
+                >
+                  <StaticImage
+                    src="../../src/images/azriclone_monitor.jpg"
+                    alt="azriclone_monitor"
+                    layout="constrained"
+                    placeholder="dominantColor"
+                    loading="lazy"
+                    objectFit="contain"
+                    className="h-full"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+          <div className="pb-line-cont"></div>
+        </div>
+        <div className="h-96 w-full"></div>
       </div>
     );
   }

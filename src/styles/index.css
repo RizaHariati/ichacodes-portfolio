@@ -40,4 +40,7 @@
   .main-container::-webkit-scrollbar {
     display: none;
   }
+  .icon-btn {
+    @apply w-10 h-10 z-10 object-cover object-center overflow-hidden rounded-sm shadow-sm  border-2 border-fillDrk hover:border-textLit active:border-fillDrkactive transition-all group-hover:opacity-75;
+  }
 }
