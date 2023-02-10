@@ -9,12 +9,14 @@ import { useState } from "react";
 import { useInView } from "react-intersection-observer";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPaperPlane } from "@fortawesome/free-regular-svg-icons";
+import MainProfileImage from "./homeComponents/MainProfileImage";
+import MainProfileInfo from "./homeComponents/MainProfileInfo";
 
 type Props = {};
 const options = {
   root: null,
   rootMargin: "0% 0px 0% 0px",
-  threshold: 0.5,
+  threshold: 0.2,
 };
 const Home = (props: Props) => {
   const {
@@ -24,7 +26,7 @@ const Home = (props: Props) => {
   const { ref: mainRef, inView: ismainVisible } = useInView({
     root: null,
     rootMargin: "0% 0px 0% 0px",
-    threshold: 0.5,
+    threshold: 0.2,
   });
   const { ref: myRef, inView: isVisible } = useInView(options);
   const { ref: myRef2, inView: isVisible2 } = useInView(options);
@@ -39,28 +41,8 @@ const Home = (props: Props) => {
     return (
       <div className="main-page-container">
         <div className="welcome-container" ref={mainRef}>
-          <div className="main-page-image-container">
-            <div className="main-page-image">
-              <StaticImage
-                src="../../src/images/profile_pic.jpg"
-                alt="background"
-                layout="constrained"
-                placeholder="dominantColor"
-                loading="lazy"
-                objectFit="cover"
-                className="h-full object-cover "
-              />
-            </div>
-          </div>
-          <div className="main-page-text animate-mainImageX">
-            <h2 className="text-right">Hello, I'm Riza Hariati </h2>{" "}
-            <h2 className="text-right text-accent">(依扎 / Icha)</h2>
-            <h3 className="leading-6 sm:leading-8">
-              Whether it's for personal purpose or for small business, it will
-              be my pleasure to create interesting reliable websites and apps
-              that reflect your goals and personality.
-            </h3>
-          </div>
+          <MainProfileImage />
+          <MainProfileInfo />
         </div>
         {/* --------------------------- project 1 -------------------------- */}
         <div
@@ -72,23 +54,16 @@ const Home = (props: Props) => {
         >
           <div className="pb-line-cont-main">
             <h2 className="hidden sm:block">My projects</h2>
-            <div className="flex flex-col h-full w-full">
-              <div className="w-full h-full">
-                <h2 className=" flex justify-center items-center animate-pulse h-full sm:hidden">
-                  My projects
-                </h2>
-              </div>
-              <div className="w-full h-full rounded-tr-lg border-t-4 border-r-4 border-textLit"></div>
-            </div>
+            <LeftLine />
           </div>
-          <div className="project-content-closed">
-            <div className="project-content-inside px-2 md:gap-20">
+          <div className="project-content">
+            <div className="project-content-inside">
               <div className="flex flex-col sm:flex-row w-full h-full justify-start items-start">
                 <div
                   className={
                     isVisible && !ismainVisible
-                      ? "h-48 sm:h-80 2xl:h-96 sm:w-full transition-all"
-                      : " w-full h-48  transition-all"
+                      ? "image-visible"
+                      : "image-invisible"
                   }
                   ref={myRef}
                 >
@@ -102,34 +77,30 @@ const Home = (props: Props) => {
                     className="h-full"
                   />
                 </div>
-                <div className="h-3/5 sm:h-full w-full bg-slate-300 bg-opacity-20 p-3 mt-auto "></div>
+                <div className="project-info-container "></div>
               </div>
             </div>
           </div>
-          <div className="pb-line-cont">
-            <div className="pb-line "></div>
-          </div>
+          <StraightLine />
         </div>
         {/* --------------------------- project 2-------------------------- */}
         <div
           className={
             isVisible2 && !isVisible
-              ? "project-container h-5/6 2xl:h-4/6 "
+              ? "project-container h-screen 2xl:h-4/6 "
               : "project-container "
           }
         >
-          <div className="pb-line-cont">
-            <div className="pb-line "></div>
-          </div>
-          <div className="project-content-closed">
+          <StraightLine />
+          <div className="project-content">
             <div className="project-content-inside">
               <div className="flex flex-col sm:flex-row w-full h-full justify-start items-start">
-                <div className="h-3/5 sm:h-full w-full bg-slate-300 bg-opacity-20 order-2 "></div>
+                <div className="project-info-container"></div>
                 <div
                   className={
                     isVisible2 && !isVisible
-                      ? "h-48 sm:h-80 2xl:h-96 sm:w-full transition-all  order-1 sm:order-3"
-                      : " w-full h-48  transition-all  order-1 sm:order-3"
+                      ? "image-visible order-1 sm:order-3"
+                      : "image-invisible order-1 sm:order-3"
                   }
                   ref={myRef2}
                 >
@@ -146,29 +117,25 @@ const Home = (props: Props) => {
               </div>
             </div>
           </div>
-          <div className="pb-line-cont">
-            <div className="pb-line"></div>
-          </div>
-        </div>{" "}
+          <StraightLine />
+        </div>
         {/* --------------------------- project 3-------------------------- */}
         <div
           className={
             isVisible3 && !isVisible2
-              ? "project-container h-5/6 2xl:h-4/6 "
+              ? "project-container h-screen 2xl:h-4/6 "
               : "project-container "
           }
         >
-          <div className="pb-line-cont">
-            <div className="pb-line "></div>
-          </div>
-          <div className="project-content-closed">
-            <div className="project-content-inside">
+          <StraightLine />
+          <div className="project-content">
+            <div className="project-content-inside ">
               <div className="flex flex-col sm:flex-row w-full h-full justify-start items-start">
                 <div
                   className={
                     isVisible3 && !isVisible2
-                      ? "h-48 sm:h-80 2xl:h-96 sm:w-full transition-all"
-                      : " w-full h-48  transition-all"
+                      ? "image-visible"
+                      : "image-invisible "
                   }
                   ref={myRef3}
                 >
@@ -182,34 +149,30 @@ const Home = (props: Props) => {
                     className="h-full"
                   />
                 </div>
-                <div className="h-3/5 sm:h-full w-full bg-slate-300 bg-opacity-20  "></div>
+                <div className="project-info-container"></div>
               </div>
             </div>
           </div>
-          <div className="pb-line-cont">
-            <div className="pb-line"></div>
-          </div>
+          <StraightLine />
         </div>
         {/* --------------------------- project 4-------------------------- */}
         <div
           className={
             isVisible4 && !isVisible3
-              ? "project-container h-5/6 2xl:h-4/6 "
+              ? "project-container h-screen 2xl:h-4/6 "
               : "project-container "
           }
         >
-          <div className="pb-line-cont">
-            <div className="pb-line "></div>
-          </div>
-          <div className="project-content-closed">
+          <StraightLine />
+          <div className="project-content">
             <div className="project-content-inside">
               <div className="flex flex-col sm:flex-row w-full h-full justify-start items-start">
-                <div className="h-3/5 sm:h-full w-full bg-slate-300 bg-opacity-20  order-2"></div>
+                <div className="project-info-container"></div>
                 <div
                   className={
                     isVisible4 && !isVisible3
-                      ? "h-48 sm:h-80 2xl:h-96 sm:w-full transition-all order-1  sm:order-3"
-                      : " w-full h-48  transition-all order-1 sm:order-3"
+                      ? "image-visible  order-1  sm:order-3"
+                      : "image-invisible order-1 sm:order-3"
                   }
                   ref={myRef4}
                 >
@@ -226,9 +189,9 @@ const Home = (props: Props) => {
               </div>
             </div>
           </div>
-          <div className="pb-line-cont"></div>
         </div>
-        <div className="h-96 w-full"></div>
+        <RightLine />
+        <div className="h-96 w-full "></div>
       </div>
     );
   }
@@ -295,3 +258,40 @@ export default Home;
 //           );
 //         })}
 //       </div>
+
+const StraightLine = (props: Props) => {
+  return (
+    <div className="pb-line-cont">
+      <div className="pb-line"></div>
+    </div>
+  );
+};
+
+const LeftLine = (props: Props) => {
+  return (
+    <div className="flex flex-col h-full w-full">
+      <div className="w-full h-full">
+        <h2 className=" flex justify-center items-center animate-pulse h-full sm:hidden">
+          My projects
+        </h2>
+      </div>
+      <div className="w-full h-full rounded-tr-lg border-t-4 border-r-4 border-textLit"></div>
+    </div>
+  );
+};
+
+const RightLine = (props: Props) => {
+  return (
+    <div className="pb-line-cont-main ">
+      <div className=" col-start-2 md:col-start-3 col-span-1 h-full w-full z-20 ">
+        <div className="h-1/2 w-full  rounded-bl-lg border-b-4 border-l-4 border-textLit"></div>
+        <div className="block sm:hidden text-right text-sm mt-2">
+          copyright Ichacodes &copy;{new Date().getFullYear()}
+        </div>
+      </div>
+      <div className="hidden sm:block text-right text-sm mt-2">
+        copyright Ichacodes &copy;{new Date().getFullYear()}
+      </div>
+    </div>
+  );
+};

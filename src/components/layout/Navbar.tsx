@@ -15,7 +15,7 @@ const Navbar = () => {
     return <div></div>;
   else {
     return (
-      <div className=" bg-pink-400 max-w-6xl mx-auto relative ">
+      <div className=" max-w-6xl mx-auto relative ">
         <Link
           to="/"
           className=" absolute top-3 left-3 cursor-pointer hover:opacity-70 transition-all flex flex-row items-center justify-start gap-x-2"
@@ -33,25 +33,8 @@ const Navbar = () => {
             Icha<span className=" text-accent ">Codes</span>
           </h1>
         </Link>
-        <div className="absolute right-0 top-16 w-14 h-44 md:h-52 2xl:h-60 z-40 flex flex-col gap-3 border-l-2 border-accent transition-all ">
-          <Link
-            to={pathname === "/" ? "/about/" : "/"}
-            className="w-10 h-10 ml-auto"
-          >
-            <div className="icon-btn">
-              <GatsbyImage
-                image={allImages?.iconImage!}
-                className="w-full h-full "
-                objectFit="cover"
-                objectPosition="center"
-                alt="riza hariati"
-              />
-            </div>
-          </Link>
-          <a
-            href="https://github.com/RizaHariati"
-            className="w-10 h-10 ml-auto"
-          >
+        <div className="navbar-link-container">
+          <a href="https://github.com/RizaHariati" className="icon-img">
             <div className="icon-btn">
               <StaticImage
                 src="../../images/icons/Github.svg"
@@ -64,7 +47,7 @@ const Navbar = () => {
           </a>
           <a
             href="https://www.linkedin.com/in/riza-hariati-2021/"
-            className="w-10 h-10 ml-auto"
+            className="icon-img"
           >
             <div className="icon-btn">
               <StaticImage
@@ -76,6 +59,17 @@ const Navbar = () => {
               />
             </div>
           </a>
+          <Link to={pathname === "/" ? "/about/" : "/"} className="icon-img">
+            <div className="icon-btn">
+              <GatsbyImage
+                image={allImages?.iconImage!}
+                className="w-full h-full "
+                objectFit="cover"
+                objectPosition="center"
+                alt="riza hariati"
+              />
+            </div>
+          </Link>
         </div>
       </div>
     );

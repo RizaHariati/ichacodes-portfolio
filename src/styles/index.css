@@ -43,4 +43,10 @@
   .icon-btn {
     @apply w-10 h-10 z-10 object-cover object-center overflow-hidden rounded-sm shadow-sm  border-2 border-fillDrk hover:border-textLit active:border-fillDrkactive transition-all group-hover:opacity-75;
   }
+  .icon-img {
+    @apply w-10 h-10 ml-auto md:w-12 md:h-12;
+  }
+  .navbar-link-container {
+    @apply absolute right-0 top-16 w-14 md:w-16 h-52 md:h-60 2xl:h-60 z-40 flex flex-col gap-3 border-l-2 border-accent transition-all;
+  }
 }
