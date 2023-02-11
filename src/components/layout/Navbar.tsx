@@ -16,20 +16,17 @@ const Navbar = () => {
   else {
     return (
       <div className=" max-w-6xl mx-auto relative ">
-        <Link
-          to="/"
-          className=" absolute top-3 left-3 cursor-pointer hover:opacity-70 transition-all flex flex-row items-center justify-start gap-x-2"
-        >
-          <div className="w-10 h-10 rounded-full hover:opacity-75 transition-all sm:hidden md:block overflow-hidden">
+        <Link to="/" className="logo-container">
+          <div className="logo-img">
             <GatsbyImage
               image={allImages?.iconLink!}
-              className="h-10"
-              objectFit="fill"
+              className="h-9 md:h-10"
+              objectFit="cover"
               objectPosition="center"
               alt="IchaIcon"
             />
           </div>
-          <h1 className=" text-textDrk lg:text-3xl ">
+          <h1 className=" text-textDrk md:text-2xl lg:text-3xl ">
             Icha<span className=" text-accent ">Codes</span>
           </h1>
         </Link>

@@ -1,0 +1,60 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  *,
+  *::after,
+  *::before {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    scroll-behavior: auto;
+  }
+  body {
+    @apply w-full h-screen bg-fillDrk text-textDrk font-normal;
+  }
+
+  h1 {
+    @apply capitalize text-3xl font-poppins font-semibold;
+  }
+  h2 {
+    @apply capitalize  text-2xl md:text-4xl  font-poppins font-medium text-center;
+  }
+  h3 {
+    @apply text-base md:text-lg lg:text-2xl font-poppins font-normal;
+  }
+  h4 {
+    @apply capitalize text-base font-poppins font-medium;
+  }
+  h5 {
+    @apply capitalize text-base font-poppins font-normal;
+  }
+}
+@layer components {
+  .about-page-container {
+    @apply w-full h-screen min-h-screen bg-fillDrk;
+  }
+  .about-container {
+    @apply w-full max-w-6xl mx-auto h-5/6 2xl:h-3/4 grid grid-rows-5 2xl:grid-rows-6 bg-fillDrkSolid pt-16  rounded-b-lg overflow-hidden transition-all pb-5;
+  }
+  .about-info-container {
+    @apply text-textLit pl-3 md:pl-10 leading-5  w-full h-full row-span-2 2xl:row-start-2 grid grid-cols-12 place-items-end pb-3 animate-mainImageX;
+  }
+  .about-info-text {
+    @apply text-textDrk md:text-xl  col-span-10 md:col-span-8;
+  }
+  .about-skill-container {
+    @apply w-full h-full pl-10 mt-3  row-span-3 md:mt-10 md:text-lg;
+  }
+  .about-skill {
+    @apply grid grid-cols-4 md:grid-cols-7 bg-textLit bg-opacity-30 p-2 md:py-1 pr-0 leading-4 md:leading-5 mb-2 h-16 sm:h-10 md:h-12 2xl:h-16 rounded-l md:w-8/12 ml-auto animate-newPulse;
+  }
+  .about-category {
+    @apply capitalize col-span-1 font-bold;
+  }
+  .about-item {
+    @apply capitalize col-span-3 md:col-span-6 font-normal;
+  }
+}

@@ -10,7 +10,7 @@ module.exports = {
 
   theme: {
     transitionDuration: {
-      DEFAULT: "500ms",
+      DEFAULT: "1000ms",
     },
 
     fontFamily: {
@@ -19,10 +19,21 @@ module.exports = {
 
     extend: {
       animation: {
+        newPulse: "newPulse 1s linear 1",
         mainImage: "mainImage 1s ease-in-out 1  ",
         mainImageX: "mainImageX 0.5s linear 1",
       },
       keyframes: {
+        newPulse: {
+          "0%": {
+            opacity: "0.2",
+            AnimationTimeline: "cubic-bezier(0.8, 0, 1, 1)",
+          },
+          "100%": {
+            opacity: "1",
+            AnimationTimeline: "cubic-bezier(0, 0, 0.2, 1)",
+          },
+        },
         mainImageX: {
           "0%": {
             transform: "translateX(-25%)",
@@ -51,13 +62,13 @@ module.exports = {
         outer: "2px 2px 6px 1px rgba(0, 0, 0, 0.3)",
       },
       colors: {
-        textDrk: "#e7e5e4",
-        textMed: "#d6d3d1",
-        textLit: "#a8a29e",
-        fillDrkSolid: "#3f3f46",
-        fillDrk: "#27272a",
+        textDrk: "#f1f5f9",
+        textMed: "#cbd5e1",
+        textLit: "#cbd5e1",
+        fillDrkSolid: "#334155",
+        fillDrk: "#1e293b",
 
-        fillDrkhover: "#52525b",
+        fillDrkhover: "#334155",
         fillDrkactive: "#a8a29e96",
         accent: "#d4a99c",
         accentHover: "#C99383",

@@ -18,15 +18,15 @@ export const projects: ProjectType[] = [
   },
   {
     id: "IC002",
-    url: "https://sudahnonton.000webhostapp.com/",
+    url: "https://sudahnonton.ichacodes.com/",
     title: "SudahNonton",
     slug: "sudahnonton",
     description: [
       "SudahNonton is a movie and TV Shows database website that also serves as REST API provider that can be consumed by other websites or applications.",
 
-      "The design is based on the Netflix website design using real data for The Movie DB and I chose to use Laravel so it can be used as Front end as well as Back End at the same time.",
+      "The design is based on the Netflix website design using real data from The Movie DB and I chose to use Laravel so it can be used as Front end as well as Back End.",
 
-      "I watched and I like all of the movies and TV shows that are shown on this website, so people will be able to watch it if they need a recommendation for movie night ",
+      "I watched and I like all of the movies and TV shows in this website, so it also can be used as recommendation for movie night ",
     ],
     mainProgram: "Laravel 8",
     dependencies: "Laravel-mix, Bootstrap, Axios, Sass",
@@ -66,15 +66,8 @@ export const projects: ProjectType[] = [
 ];
 
 export const aboutData = {
-  message: [
-    "Hello, I'm Riza Hariati (依扎 / Icha).",
-    "Websites and Digital Applications are a very important part of modern life, they have to be interesting, reliable, and reflect your goals and personality, so it can attract the right people.",
-    "As a part of the web and app developers world, I will create them for you.",
-    "I mostly work on Front End Developing, from designing to testing to deployment. I also dabble on the Back End creating simple CRUD data.",
-    "My favorite programming tool is React.JS, but I also enjoy working with Laravel and created a few websites using it.",
-    "I have also used Java to help me learn algorithms and data structure, which was so much fun for me.",
-    "Thank you for visiting!",
-  ],
+  message:
+    "I mostly work on Front End Developing, from designing to testing to deployment. I also dabble on the Back End creating simple CRUD data. Designing apps and websites that are custom-made to your need is my interest. My favorite programming tool is React.JS, but I also enjoy working with Laravel.",
 
   frontEnd:
     "Javascript/Css/Html, TypeScript, Java, React.JS, React Native, Gatsby.JS, Next.JS",

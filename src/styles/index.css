@@ -32,6 +32,15 @@
   }
 }
 @layer components {
+  /* ---------------------------- navbar ---------------------------- */
+  .logo-container {
+    @apply absolute top-2 left-1  md:top-3 md:left-3 cursor-pointer hover:opacity-70 transition-all flex flex-row items-center justify-start gap-x-1 md:gap-x-2;
+  }
+
+  .logo-img {
+    @apply w-9 h-9 md:w-10 md:h-10 rounded-full hover:opacity-75 transition-all sm:hidden md:block overflow-hidden;
+  }
+  /* ---------------------------- general --------------------------- */
   .main-layout {
     @apply h-full w-full relative bg-fillDrk;
   }
@@ -39,6 +48,7 @@
   .main-layout::-webkit-scrollbar,
   .main-container::-webkit-scrollbar {
     display: none;
+    color:#52525b;
   }
   .icon-btn {
     @apply w-10 h-10 z-10 object-cover object-center overflow-hidden rounded-sm shadow-sm  border-2 border-fillDrk hover:border-textLit active:border-fillDrkactive transition-all group-hover:opacity-75;
@@ -47,6 +57,15 @@
     @apply w-10 h-10 ml-auto md:w-12 md:h-12;
   }
   .navbar-link-container {
-    @apply absolute right-0 top-16 w-14 md:w-16 h-52 md:h-60 2xl:h-60 z-40 flex flex-col gap-3 border-l-2 border-accent transition-all;
+    @apply absolute right-0 top-16 w-14 md:w-16 h-52  2xl:h-64 z-40 flex flex-col gap-3 border-l-2 border-accent transition-all;
+  }
+  .slide-title-container {
+    @apply w-full flex gap-2 items-start justify-start mt-2 sm:mt-auto;
+  }
+  .slide-logo {
+    @apply w-6 h-6 sm:w-8 sm:h-8 lg:w-10 lg:h-10 mt-2 sm:mt-1 md:mt-0 transition-all z-10 overflow-hidden object-fill bg-textDrk rounded-full object-center ml-auto;
+  }
+  .standard-btn {
+    @apply flex items-center justify-center bg-accentHover bg-opacity-90 gap-2 w-28 sm:w-32  rounded-sm hover:bg-accentActive text-textDrk hover:text-textMed active:bg-fillDrkactive transition-all shadow-black shadow-sm text-sm 2xl:text-base;
   }
 }

@@ -4,7 +4,7 @@ import Layout from "../components/layout/Layout";
 import { SEO } from "../components/seo/seo";
 import { useGlobalContext } from "../context/AppProvider";
 import { aboutData } from "../data/data";
-
+import "../styles/aboutpage.css";
 type Props = {};
 
 const about = (props: Props) => {
@@ -17,41 +17,25 @@ const about = (props: Props) => {
   else {
     return (
       <Layout>
-        <div className="about-container pb-10">
-          <div className="about-me ">
-            <div className="about-me-photo">
-              <GatsbyImage
-                image={allImages.profilePicSmall!}
-                className="w-28 h-28 md:w-40 md:h-40  "
-                objectFit="cover"
-                objectPosition="center"
-                alt="IchaIcon"
-              />
+        <div className="about-page-container">
+          <div className="about-container ">
+            <div className="about-info-container ">
+              <p className="about-info-text">{aboutData.message}</p>
             </div>
-            <div className="about-me-message">
-              {aboutData.message.map((item: string, index: number) => {
-                return (
-                  <p
-                    className={index === 0 ? "font-bold" : "font-normal"}
-                    key={index}
-                  >
-                    {item}
-                  </p>
-                );
-              })}
+            <div className=" about-skill-container">
+              {Object.entries(aboutData)
+                .slice(1)
+                .map((item, index) => {
+                  return (
+                    <div key={index} className="about-skill ">
+                      <p className="about-category">{item[0]}</p>
+
+                      <p className="about-item">{item[1]}</p>
+                    </div>
+                  );
+                })}
             </div>
           </div>
-          {Object.entries(aboutData)
-            .slice(1)
-            .map((item, index) => {
-              return (
-                <div key={index} className="about-skill ">
-                  <p className="capitalize col-span-1 font-bold">{item[0]}</p>
-
-                  <p className="capitalize col-span-8 font-normal">{item[1]}</p>
-                </div>
-              );
-            })}
         </div>
       </Layout>
     );
@@ -71,3 +55,40 @@ export const Head = (props: HeadProps) => {
     </SEO>
   );
 };
+
+// <div className="about-container pb-10">
+//   <div className="about-me ">
+//     <div className="about-me-photo">
+//       <GatsbyImage
+//         image={allImages.profilePicSmall!}
+//         className="w-28 h-28 md:w-40 md:h-40  "
+//         objectFit="cover"
+//         objectPosition="center"
+//         alt="IchaIcon"
+//       />
+//     </div>
+//     <div className="about-me-message">
+//       {aboutData.message.map((item: string, index: number) => {
+//         return (
+//           <p
+//             className={index === 0 ? "font-bold" : "font-normal"}
+//             key={index}
+//           >
+//             {item}
+//           </p>
+//         );
+//       })}
+//     </div>
+//   </div>
+//   {Object.entries(aboutData)
+//     .slice(1)
+//     .map((item, index) => {
+//       return (
+//         <div key={index} className="about-skill ">
+//           <p className="capitalize col-span-1 font-bold">{item[0]}</p>
+
+//           <p className="capitalize col-span-8 font-normal">{item[1]}</p>
+//         </div>
+//       );
+//     })}
+// </div>;

@@ -10,7 +10,7 @@
     padding: 0;
     box-sizing: border-box;
     text-decoration: none;
-    scroll-behavior: smooth;
+    scroll-behavior: auto;
   }
   body {
     @apply w-full h-screen bg-fillDrk text-textDrk font-normal;
@@ -23,7 +23,7 @@
     @apply capitalize  text-2xl md:text-4xl  font-poppins font-medium text-center;
   }
   h3 {
-    @apply text-base sm:text-lg md:text-2xl font-poppins font-normal;
+    @apply text-base md:text-lg lg:text-2xl font-poppins font-normal;
   }
   h4 {
     @apply capitalize text-base font-poppins font-medium;
@@ -38,18 +38,18 @@
   }
 
   .welcome-container {
-    @apply w-full max-w-6xl mx-auto h-5/6 2xl:h-3/4 grid grid-cols-1 grid-rows-2 md:grid-cols-11  md:grid-rows-1 bg-fillDrkSolid pt-16 gap-2 rounded-b-lg overflow-hidden transition-all  mb-3;
+    @apply w-full max-w-6xl mx-auto h-5/6 2xl:h-3/4 grid grid-cols-1 grid-rows-2 sm:grid-cols-11  sm:grid-rows-1 bg-fillDrkSolid pt-16 gap-2 rounded-b-lg overflow-hidden transition-all  mb-3;
   }
   .main-page-image-container {
-    @apply h-fit md:h-full w-fit col-span-1 md:col-span-2 transition-all animate-mainImageX;
+    @apply h-fit sm:h-full w-fit col-span-1 sm:col-span-2 transition-all animate-mainImageX;
   }
   .main-page-image {
     max-height: 500px;
-    @apply w-52 h-52 sm:w-64 sm:h-80 md:h-full overflow-hidden object-cover transition-all rounded-none rounded-r-md shadow-md;
+    @apply w-52 h-52 md:w-64 md:h-80 lg:h-full overflow-hidden object-cover transition-all rounded-none rounded-r-md shadow-md;
   }
   .main-page-text {
-    @apply h-full w-full col-span-1 md:col-span-8 md:col-start-4
-    text-right flex flex-col justify-start md:justify-end p-3  md:p-5 md:pr-20 transition-all;
+    @apply h-full w-full col-span-1 sm:col-span-8 sm:col-start-4
+    text-right flex flex-col justify-start sm:justify-end p-3  sm:p-5 sm:pr-20 transition-all;
   }
 
   .project-container {
@@ -66,26 +66,29 @@
   }
 
   .project-content {
-    @apply w-full h-full bg-fillDrk max-w-6xl mx-auto rounded-lg my-auto  flex p-4 transition-all;
+    @apply w-full h-full sm:h-fit md:h-full bg-fillDrk max-w-6xl mx-auto rounded-lg my-auto  flex p-4 pt-2 transition-all;
   }
 
   .project-content-inside {
-    @apply w-full h-full  overflow-hidden bg-fillDrkSolid rounded-md shadow-md;
+    @apply w-full h-full  overflow-hidden bg-fillDrkSolid rounded-md shadow-md transition-all;
   }
 
   .project-info-container {
-    @apply h-full w-full order-2 bg-pink-300 overflow-hidden;
+    @apply h-full w-full order-2  overflow-hidden p-2;
   }
   .project-info {
-    @apply w-full flex flex-col overflow-hidden transition-all;
+    @apply w-full flex flex-col overflow-hidden transition-all gap-2;
+  }
+  .project-info-outer {
+    @apply flex flex-col sm:flex-row w-full h-full justify-start items-start;
   }
   .project-description {
-    @apply leading-5 text-textLit;
+    @apply leading-5 sm:leading-3 md:leading-5 text-textMed flex-col;
   }
   .image-visible {
-    @apply h-48 sm:h-80 2xl:h-96 sm:w-full transition-all;
+    @apply h-48 md:h-80 2xl:h-96 sm:w-full transition-all bg-fillDrkSolid;
   }
   .image-invisible {
-    @apply w-full h-48  transition-all;
+    @apply w-full h-48 sm:h-44 md:h-48 transition-all bg-fillDrkSolid;
   }
 }
