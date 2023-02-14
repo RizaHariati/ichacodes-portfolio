@@ -3,68 +3,71 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { GatsbyImage, IGatsbyImageData } from "gatsby-plugin-image";
 import React from "react";
 import { ProjectType } from "../../context/types.d";
+import { TextHeightType } from "../Home";
 
 type Props = {
   project: ProjectType;
   logo: IGatsbyImageData;
   visibility: boolean;
+  textHeight: TextHeightType;
 };
 
-const MainProjectInfo = ({ project, logo, visibility }: Props) => {
+const MainProjectInfo = ({ project, logo, visibility, textHeight }: Props) => {
   return (
-    <div className="w-full h-full flex flex-col p-2">
-      <div
-        className={
-          visibility
-            ? "slide-title-container  animate-mainImageX"
-            : "slide-title-container"
-        }
-      >
+    <div
+      className={
+        visibility
+          ? `slide-container  ${
+              project.title.toLowerCase() === "sudahnonton" ||
+              project.title.toLowerCase() === "azriclone"
+                ? "sm:animate-mainImageX sm:order-1"
+                : "sm:animate-mainImageXMin"
+            }`
+          : "slide-container"
+      }
+    >
+      <div className="flex flex-row gap-2">
         <h2
           className={
             visibility
-              ? "text-right w-full mb-4 border-b-4 border-b-textLit"
-              : "text-right w-full mb-4 sm:border-b-4 sm:border-b-textLit"
+              ? "text-right w-full  border-b-4 border-b-textLit"
+              : "text-right w-full sm:border-b-4 sm:border-b-textLit"
           }
         >
           {project.title}
         </h2>
         <div className="slide-logo ">
-          <GatsbyImage
-            image={logo!}
-            className="w-6 h-6 sm:w-8 sm:h-8 lg:w-10 lg:h-10 "
-            objectFit="fill"
-            objectPosition="center"
-            alt={project.title}
-          />
+          <GatsbyImage image={logo!} alt={project.title} />
         </div>
       </div>
-      <div className={visibility ? "flex flex-col w-full" : "hidden "}>
-        <div>
-          <div className="project-info">
-            <div className="project-description">
-              {project.description.map(
-                (projectItem: string, projectIndex: number) => {
-                  return <p key={projectIndex}>{projectItem}</p>;
-                }
-              )}
-            </div>
-
-            <p>
-              <span className="border border-accent rounded-sm px-1 w-48 mr-2">
-                Main Program&nbsp;
-              </span>
-              : {project.mainProgram}
-            </p>
-            <p>
-              <span className="border border-accent rounded-sm px-1 w-48 mr-2">
-                Dependencies&nbsp;
-              </span>
-              &nbsp;:&nbsp;
-              {project.dependencies.toString()}
-            </p>
-          </div>
+      <div
+        className={
+          visibility
+            ? "project-info-container h-fit"
+            : "project-info-container h-0"
+        }
+      >
+        <div className={textHeight.project}>
+          {project.description.map(
+            (projectItem: string, projectIndex: number) => {
+              return <p key={projectIndex}>{projectItem}</p>;
+            }
+          )}
         </div>
+
+        <p>
+          <span className="border border-accent rounded-sm px-1 w-48 mr-2">
+            Main Program&nbsp;
+          </span>
+          : {project.mainProgram}
+        </p>
+        <p>
+          <span className="border border-accent rounded-sm px-1 w-48 mr-2">
+            Dependencies&nbsp;
+          </span>
+          &nbsp;:&nbsp;
+          {project.dependencies.toString()}
+        </p>
         <a
           href={project.url}
           className={`standard-btn p-1 my-2 ${

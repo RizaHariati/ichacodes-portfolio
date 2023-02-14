@@ -20,7 +20,7 @@
     @apply capitalize text-3xl font-poppins font-semibold;
   }
   h2 {
-    @apply capitalize  text-2xl md:text-4xl  font-poppins font-medium text-center;
+    @apply capitalize  text-2xl sm:text-3xl md:text-4xl  font-poppins font-medium text-center;
   }
   h3 {
     @apply text-base md:text-lg lg:text-2xl font-poppins font-normal;
@@ -49,7 +49,7 @@
   }
   .main-page-text {
     @apply h-full w-full col-span-1 sm:col-span-8 sm:col-start-4
-    text-right flex flex-col justify-start sm:justify-end p-3  sm:p-5 sm:pr-20 transition-all;
+    text-right flex flex-col justify-end p-3  sm:p-5 sm:pr-20 transition-all;
   }
 
   .project-container {
@@ -66,7 +66,7 @@
   }
 
   .project-content {
-    @apply w-full h-full sm:h-fit md:h-full bg-fillDrk max-w-6xl mx-auto rounded-lg my-auto  flex p-4 pt-2 transition-all;
+    @apply w-full h-full bg-fillDrk max-w-6xl mx-auto rounded-lg my-auto  flex p-4 pt-2 transition-all;
   }
 
   .project-content-inside {
@@ -74,19 +74,30 @@
   }
 
   .project-info-container {
-    @apply h-full w-full order-2  overflow-hidden p-2;
+    @apply w-full  overflow-hidden transition-all gap-1 flex flex-col h-0 md:gap-3;
   }
-  .project-info {
-    @apply w-full flex flex-col overflow-hidden transition-all gap-2;
-  }
+
   .project-info-outer {
-    @apply flex flex-col sm:flex-row w-full h-full justify-start items-start;
+    @apply flex flex-col sm:flex-row w-full h-full;
   }
-  .project-description {
-    @apply leading-5 sm:leading-3 md:leading-5 text-textMed flex-col;
+  .main-info-text {
+    @apply transition-all text-lg text-textDrk pb-10;
+  }
+
+  .project-description-supershort {
+    @apply text-textMed flex-col text-sm leading-4 gap-1;
+  }
+  .project-description-short {
+    @apply text-textMed flex-col text-sm leading-4 md:text-lg md:leading-5  h-fit;
+  }
+  .project-description-medium {
+    @apply text-textMed flex-col leading-5 text-base sm:leading-6 md:text-lg;
+  }
+  .project-description-high {
+    @apply text-textMed flex-col text-lg leading-normal md:text-xl;
   }
   .image-visible {
-    @apply h-48 md:h-80 2xl:h-96 sm:w-full transition-all bg-fillDrkSolid;
+    @apply h-60 md:h-80 2xl:h-96 sm:w-full transition-all bg-fillDrkSolid;
   }
   .image-invisible {
     @apply w-full h-48 sm:h-44 md:h-48 transition-all bg-fillDrkSolid;

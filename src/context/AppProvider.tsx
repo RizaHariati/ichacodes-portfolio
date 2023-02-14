@@ -16,9 +16,20 @@ export const result = graphql`
   query MyQuery {
     allImageSharp {
       nodes {
-        gatsbyImageData(height: 400, placeholder: DOMINANT_COLOR)
+        gatsbyImageData(
+          placeholder: DOMINANT_COLOR
+          aspectRatio: 1
+          height: 400
+        )
         original {
           src
+        }
+        resize(fit: COVER) {
+          src
+          tracedSVG
+          width
+          height
+          originalName
         }
       }
     }
@@ -85,12 +96,10 @@ export const AppProvider = ({ children }: Props) => {
         });
       });
 
-     
-        dispatch({
-          type: "SET_ALL_IMAGES",
-          payload: { allImages, portfolioImages },
-        });
-   
+      dispatch({
+        type: "SET_ALL_IMAGES",
+        payload: { allImages, portfolioImages },
+      });
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);

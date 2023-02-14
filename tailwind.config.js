@@ -22,6 +22,7 @@ module.exports = {
         newPulse: "newPulse 1s linear 1",
         mainImage: "mainImage 1s ease-in-out 1  ",
         mainImageX: "mainImageX 0.5s linear 1",
+        mainImageXMin: "mainImageXMin 0.5s linear 1",
       },
       keyframes: {
         newPulse: {
@@ -37,6 +38,16 @@ module.exports = {
         mainImageX: {
           "0%": {
             transform: "translateX(-25%)",
+            AnimationTimeline: "cubic-bezier(0.8, 0, 1, 1)",
+          },
+          "100%": {
+            transform: "translateX(0)",
+            AnimationTimeline: "cubic-bezier(0, 0, 0.2, 1)",
+          },
+        },
+        mainImageXMin: {
+          "0%": {
+            transform: "translateX(25%)",
             AnimationTimeline: "cubic-bezier(0.8, 0, 1, 1)",
           },
           "100%": {
