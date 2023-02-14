@@ -49,7 +49,7 @@
     @apply w-full h-full pl-10 mt-3  row-span-3 md:mt-10 md:text-lg;
   }
   .about-skill {
-    @apply grid grid-cols-4 md:grid-cols-7 bg-textLit bg-opacity-30 p-2 md:py-1 pr-0 leading-4 md:leading-5 mb-2 h-16 sm:h-10 md:h-12 2xl:h-16 rounded-l md:w-8/12 ml-auto animate-newPulse;
+    @apply grid grid-cols-4 md:grid-cols-7 bg-textLit bg-opacity-20 p-2 md:py-1 pr-0 leading-4 md:leading-5 mb-2 h-16 sm:h-10 md:h-12 2xl:h-16 rounded-l md:w-8/12 ml-auto animate-newPulse;
   }
   .about-category {
     @apply capitalize col-span-1 font-bold;

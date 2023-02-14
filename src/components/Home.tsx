@@ -7,6 +7,7 @@ import MainProfileImage from "./homeComponents/MainProfileImage";
 import MainProfileInfo from "./homeComponents/MainProfileInfo";
 import MainProjectInfo from "./homeComponents/MainProjectInfo";
 import { useEffect } from "react";
+import { getHeightCSS } from "../utils/getHeightCSS";
 
 type Props = {};
 export type TextHeightType = {
@@ -17,7 +18,7 @@ export type TextHeightType = {
 };
 const options = {
   root: null,
-  rootMargin: "0px 0px 0px 0px",
+  rootMargin: "0% 0px 0% 0px",
   threshold: 0.1,
 };
 const Home = (props: Props) => {
@@ -31,76 +32,20 @@ const Home = (props: Props) => {
     state: { portfolioImages },
   } = useGlobalContext();
   // const myRef: any = useRef(null);
-  const {
-    ref: mainRef,
-    inView: ismainVisible,
-    entry: entryMain,
-  } = useInView({
+  const { ref: mainRef, inView: ismainVisible } = useInView({
     root: null,
-    rootMargin: "0px 0px 0% 0px",
-    threshold: 0.3,
+    rootMargin: "0% 0px 0% 0px",
+    threshold: 0.1,
   });
-  const { ref: myRef, inView: isVisible, entry } = useInView(options);
-  const { ref: myRef2, inView: isVisible2, entry: entry2 } = useInView(options);
-  const { ref: myRef3, inView: isVisible3, entry: entry3 } = useInView(options);
-  const { ref: myRef4, inView: isVisible4, entry: entry4 } = useInView(options);
+  const { ref: myRef, inView: isVisible } = useInView(options);
+  const { ref: myRef2, inView: isVisible2 } = useInView(options);
+  const { ref: myRef3, inView: isVisible3 } = useInView(options);
+  const { ref: myRef4, inView: isVisible4 } = useInView(options);
 
-  const checkHeight = (entry: IntersectionObserverEntry | undefined) => {
-    const entryheight = entry?.rootBounds?.height || 700;
-
-    if (entryheight !== textHeight.height) {
-      if (entryheight < 460) {
-        return settextHeight({
-          height: entryheight,
-          project: "project-description-supershort",
-          mainInfo: "main-info-text leading-5",
-          mainImage: "image-visible",
-        });
-      }
-      if (entryheight >= 460 && entryheight < 550) {
-        return settextHeight({
-          height: entryheight,
-          project: "project-description-short ",
-          mainInfo: "main-info-text leading-6 ",
-          mainImage: "image-visible",
-        });
-      } else if (entryheight >= 550 && entryheight < 750) {
-        return settextHeight({
-          height: entryheight,
-          project: "project-description-medium ",
-          mainInfo: "main-info-text leading-6 pb-10 md:text-xl ",
-          mainImage: "image-visible sm:h-72",
-        });
-      } else if (entryheight >= 750) {
-        return settextHeight({
-          height: entryheight,
-          project: "project-description-high ",
-          mainInfo:
-            "main-info-text leading-7 pb-20 text-xl md:text-2xl leading-8 ",
-          mainImage: "image-visible h-72",
-        });
-      }
-    } else {
-      return;
-    }
-  };
   useEffect(() => {
-    if (ismainVisible) {
-      return checkHeight(entryMain);
-    }
-    if (isVisible) {
-      return checkHeight(entry);
-    }
-    if (isVisible2) {
-      return checkHeight(entry2);
-    }
-    if (isVisible3) {
-      return checkHeight(entry3);
-    }
-    if (isVisible4) {
-      return checkHeight(entry4);
-    }
-  }, [isVisible, isVisible2, isVisible3, isVisible4, ismainVisible]);
+    const heightNew = getHeightCSS(window.innerHeight);
+    settextHeight(heightNew);
+  }, [window.innerHeight]);
 
   if (
     !portfolioImages ||
@@ -284,7 +229,7 @@ const Home = (props: Props) => {
           <RightLine />
         </div>
 
-        <div className="h-20 sm:h-40 md:h-44 2xl:h-full w-full "></div>
+        <div className="h-20 sm:h-52 2xl:h-full w-full "></div>
       </div>
     );
   }

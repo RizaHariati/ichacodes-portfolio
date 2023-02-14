@@ -10,7 +10,7 @@ module.exports = {
 
   theme: {
     transitionDuration: {
-      DEFAULT: "1000ms",
+      DEFAULT: "1500ms",
     },
 
     fontFamily: {
@@ -76,16 +76,15 @@ module.exports = {
         textDrk: "#f1f5f9",
         textMed: "#cbd5e1",
         textLit: "#cbd5e1",
-        fillDrkSolid: "#334155",
-        fillDrk: "#1e293b",
-
-        fillDrkhover: "#334155",
+        fillDrkSolid: "#1e293b",
+        fillDrk: "#0f172a",
+        fillDrkhover: "#1e293b",
         fillDrkactive: "#a8a29e96",
         accent: "#d4a99c",
         accentHover: "#C99383",
         accentActive: "#dfbeb5",
         accentOpacity: "#dfbeb55e",
-        shadow: "#44403c",
+        shadow: "#1e293b",
       },
     },
   },
