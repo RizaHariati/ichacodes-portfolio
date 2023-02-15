@@ -10,34 +10,53 @@ type Props = {
   logo: IGatsbyImageData;
   visibility: boolean;
   textHeight: TextHeightType;
+  evenOdd: "even" | "odd";
 };
 
-const MainProjectInfo = ({ project, logo, visibility, textHeight }: Props) => {
+const MainProjectInfo = ({
+  project,
+  logo,
+  visibility,
+  textHeight,
+  evenOdd,
+}: Props) => {
   return (
     <div
       className={
         visibility
-          ? `slide-container  ${
-              project.title.toLowerCase() === "sudahnonton" ||
-              project.title.toLowerCase() === "azriclone"
-                ? "sm:animate-mainImageX sm:order-1"
-                : "sm:animate-mainImageXMin"
+          ? `slide-container animate-mainImage  ${
+              evenOdd === "odd"
+                ? " sm:animate-mainImageYMin"
+                : " sm:animate-mainImageYMin order-3"
             }`
-          : "slide-container"
+          : "slide-container  max-w-full"
       }
     >
-      <div className="flex flex-row gap-2">
+      <div
+        className={`flex flex-row gap-2 sm:gap-4 w-full ${
+          !visibility
+            ? evenOdd === "odd"
+              ? "sm:pr-8 md:pr-14"
+              : "sm:pl-8 md:pl-14"
+            : "pl-3 pr-3  sm:pl-4 sm:pr-4 "
+        }`}
+      >
         <h2
           className={
-            visibility
-              ? "text-right w-full  border-b-4 border-b-textLit"
-              : "text-right w-full sm:border-b-4 sm:border-b-textLit"
+            evenOdd === "odd"
+              ? "main-title-text order-3 text-left"
+              : "main-title-text"
           }
         >
           {project.title}
         </h2>
         <div className="slide-logo ">
-          <GatsbyImage image={logo!} alt={project.title} />
+          <GatsbyImage
+            image={logo!}
+            alt={project.title}
+            objectFit="fill"
+            className="h-full w-full"
+          />
         </div>
       </div>
       <div
@@ -71,10 +90,7 @@ const MainProjectInfo = ({ project, logo, visibility, textHeight }: Props) => {
         <a
           href={project.url}
           className={`standard-btn p-1 my-2 ${
-            project.title.toLowerCase() === "sudahnonton" ||
-            project.title.toLowerCase() === "azriclone"
-              ? "ml-auto"
-              : "mr-auto"
+            evenOdd === "odd" ? "mr-auto" : "ml-auto"
           }`}
         >
           <FontAwesomeIcon icon={faPaperPlane} />

@@ -4,6 +4,7 @@ import LoadingPage from "../components/LoadingPage";
 import Home from "../components/Home";
 import Layout from "../components/layout/Layout";
 import { SEO } from "../components/seo/seo";
+import Modal from "../components/modalComponents/Modal";
 
 type Props = {};
 const index = (props: Props) => {
@@ -13,6 +14,7 @@ const index = (props: Props) => {
 
   return (
     <Layout>
+      <Modal />
       {!allImages ||
         (allImages && Object.keys(allImages).length < 1 && <LoadingPage />)}
       {allImages && Object.keys(allImages).length > 0 && <Home />}

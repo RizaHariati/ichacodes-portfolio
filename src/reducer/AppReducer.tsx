@@ -14,5 +14,31 @@ export const appReducer = (state: AppState, action: OpenModalAction) => {
     };
   }
 
+  if (action.type === "SET_SCROLL_UP") {
+    return {
+      ...state,
+      scrollingUp: true,
+    };
+  }
+  if (action.type === "SET_SCROLL_DOWN") {
+    return {
+      ...state,
+      scrollingUp: false,
+    };
+  }
+  if (action.type === "OPEN_MODAL") {
+    const value = action.payload;
+    return {
+      ...state,
+      openModal: { status: true, value },
+    };
+  }
+
+  if (action.type === "CLOSE_MODAL") {
+    return {
+      ...state,
+      openModal: { status: false, value: "" },
+    };
+  }
   return state;
 };

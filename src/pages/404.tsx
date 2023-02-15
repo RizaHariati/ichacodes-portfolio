@@ -27,8 +27,7 @@ const Error = (props: Props) => {
 };
 
 export default Error;
-export const Head = ({ location, params, data, pageContext }: any) => {
-  console.log({ pageContext });
+export const Head = (props: Props) => {
   return (
     <SEO title="Error" description="404 - Page not found">
       <title>IchaCodes | Error</title>

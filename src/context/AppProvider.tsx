@@ -16,20 +16,9 @@ export const result = graphql`
   query MyQuery {
     allImageSharp {
       nodes {
-        gatsbyImageData(
-          placeholder: DOMINANT_COLOR
-          aspectRatio: 1
-          height: 400
-        )
+        gatsbyImageData(placeholder: BLURRED, layout: CONSTRAINED)
         original {
           src
-        }
-        resize(fit: COVER) {
-          src
-          tracedSVG
-          width
-          height
-          originalName
         }
       }
     }
@@ -54,15 +43,15 @@ export const AppProvider = ({ children }: Props) => {
 
         nodes.map((image: ImageType) => {
           if (image.original.src.includes(slug)) {
-            if (image.original.src.includes("long")) {
+            if (image.original.src.includes("_monitor")) {
               portfolioImages[slug] = {
                 ...portfolioImages[slug],
-                long: getImage(image.gatsbyImageData),
+                monitor: getImage(image.gatsbyImageData),
               };
-            } else if (image.original.src.includes("short")) {
+            } else if (image.original.src.includes("screenPhone")) {
               portfolioImages[slug] = {
                 ...portfolioImages[slug],
-                short: getImage(image.gatsbyImageData),
+                screenPhone: getImage(image.gatsbyImageData),
               };
             } else if (image.original.src.includes("mainphone")) {
               portfolioImages[slug] = {
@@ -74,16 +63,6 @@ export const AppProvider = ({ children }: Props) => {
                 ...portfolioImages[slug],
                 logo: getImage(image.gatsbyImageData),
               };
-            } else if (image.original.src.includes("subphone")) {
-              portfolioImages[slug] = {
-                ...portfolioImages[slug],
-                subphone: getImage(image.gatsbyImageData),
-              };
-            } else if (image.original.src.includes("subpage")) {
-              portfolioImages[slug] = {
-                ...portfolioImages[slug],
-                subpage: getImage(image.gatsbyImageData),
-              };
             }
           } else if (image.original.src.includes("profileIcon")) {
             allImages["iconImage"] = getImage(image.gatsbyImageData);
@@ -91,6 +70,8 @@ export const AppProvider = ({ children }: Props) => {
             allImages["iconLink"] = getImage(image.gatsbyImageData);
           } else if (image.original.src.includes("profilePicSmall")) {
             allImages["profilePicSmall"] = getImage(image.gatsbyImageData);
+          } else if (image.original.src.includes("magnifying")) {
+            allImages["magnifying"] = getImage(image.gatsbyImageData);
           }
           return "";
         });
@@ -104,9 +85,38 @@ export const AppProvider = ({ children }: Props) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
+  const setScrollingUp = () => {
+    dispatch({
+      type: "SET_SCROLL_UP",
+    });
+  };
+  const setScrollingDown = () => {
+    dispatch({
+      type: "SET_SCROLL_DOWN",
+    });
+  };
+
+  const setCloseModal = () => {
+    console.log("triggered");
+    dispatch({
+      type: "CLOSE_MODAL",
+    });
+  };
+
+  const setOpenModal = (value: string) => {
+    dispatch({
+      type: "OPEN_MODAL",
+      payload: value,
+    });
+  };
+
   const value = {
     state,
     dispatch,
+    setScrollingDown,
+    setScrollingUp,
+    setCloseModal,
+    setOpenModal,
   };
   return <AppContext.Provider value={value}>{children}</AppContext.Provider>;
 };

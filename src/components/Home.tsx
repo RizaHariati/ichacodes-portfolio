@@ -1,5 +1,4 @@
-import { StaticImage } from "gatsby-plugin-image";
-import React, { useState } from "react";
+import React, { useState, useCallback } from "react";
 import { useGlobalContext } from "../context/AppProvider";
 import { projects } from "../data/data";
 import { useInView } from "react-intersection-observer";
@@ -8,6 +7,7 @@ import MainProfileInfo from "./homeComponents/MainProfileInfo";
 import MainProjectInfo from "./homeComponents/MainProjectInfo";
 import { useEffect } from "react";
 import { getHeightCSS } from "../utils/getHeightCSS";
+import MainImageInfo from "./homeComponents/MainImageInfo";
 
 type Props = {};
 export type TextHeightType = {
@@ -18,7 +18,7 @@ export type TextHeightType = {
 };
 const options = {
   root: null,
-  rootMargin: "0% 0px 0% 0px",
+  rootMargin: "-55% 0px 0% 0px",
   threshold: 0.1,
 };
 const Home = (props: Props) => {
@@ -29,18 +29,34 @@ const Home = (props: Props) => {
     mainImage: "image-visible",
   });
   const {
+    setScrollingDown,
+    setScrollingUp,
     state: { portfolioImages },
   } = useGlobalContext();
   // const myRef: any = useRef(null);
+
   const { ref: mainRef, inView: ismainVisible } = useInView({
     root: null,
-    rootMargin: "0% 0px 0% 0px",
+    rootMargin: "-60%  0px 0% 0px",
     threshold: 0.1,
   });
   const { ref: myRef, inView: isVisible } = useInView(options);
   const { ref: myRef2, inView: isVisible2 } = useInView(options);
   const { ref: myRef3, inView: isVisible3 } = useInView(options);
   const { ref: myRef4, inView: isVisible4 } = useInView(options);
+
+  const handleScroll = useCallback(
+    (e: React.UIEvent<HTMLDivElement, UIEvent>) => {
+      const window = e.currentTarget.scrollTop;
+
+      if (window >= 200) {
+        setScrollingUp();
+      } else if (window < 300) {
+        setScrollingDown();
+      }
+    },
+    []
+  );
 
   useEffect(() => {
     const heightNew = getHeightCSS(window.innerHeight);
@@ -54,7 +70,12 @@ const Home = (props: Props) => {
     return <div></div>;
   } else {
     return (
-      <div className="main-page-container">
+      <div
+        className="main-page-container"
+        onScroll={(e) => {
+          handleScroll(e);
+        }}
+      >
         <div className="welcome-container" ref={mainRef}>
           <MainProfileImage />
           <MainProfileInfo textHeight={textHeight} />
@@ -71,33 +92,22 @@ const Home = (props: Props) => {
             <h2 className="hidden sm:block animate-pulse">My projects</h2>
             <LeftLine />
           </div>
-          <div className="project-content">
+          <div className="project-content" ref={myRef}>
             <div className="project-content-inside">
               <div className="project-info-outer">
-                <div
-                  className={
-                    isVisible && !ismainVisible
-                      ? textHeight.mainImage
-                      : "image-invisible"
-                  }
-                  ref={myRef}
-                >
-                  <StaticImage
-                    src="../../src/images/bayarplanner_monitor.jpg"
-                    alt="bayarplanner_monitor"
-                    layout="constrained"
-                    placeholder="dominantColor"
-                    loading="lazy"
-                    objectFit="contain"
-                    className="h-full"
-                  />
-                </div>
+                <MainImageInfo
+                  visibility={isVisible && !ismainVisible}
+                  imageCSS={textHeight.mainImage}
+                  imageName="bayarplanner_monitor"
+                  evenOdd="odd"
+                />
 
                 <MainProjectInfo
                   textHeight={textHeight}
                   project={projects[0]}
                   logo={portfolioImages["bayarplanner"].logo!}
                   visibility={isVisible && !ismainVisible}
+                  evenOdd="odd"
                 />
               </div>
             </div>
@@ -113,32 +123,22 @@ const Home = (props: Props) => {
           }
         >
           <StraightLine />
-          <div className="project-content">
+          <div className="project-content" ref={myRef2}>
             <div className="project-content-inside">
               <div className="project-info-outer">
-                <div
-                  className={
-                    isVisible2 && !isVisible
-                      ? "image-visible sm:order-3"
-                      : "image-invisible sm:order-3 "
-                  }
-                  ref={myRef2}
-                >
-                  <StaticImage
-                    src="../../src/images/sudahnonton_monitor.jpg"
-                    alt="sudahnonton_monitor"
-                    layout="constrained"
-                    placeholder="dominantColor"
-                    loading="lazy"
-                    objectFit="contain"
-                    className="h-full"
-                  />
-                </div>
+                <MainImageInfo
+                  visibility={isVisible2 && !isVisible}
+                  imageCSS={textHeight.mainImage}
+                  imageName="sudahnonton_monitor"
+                  evenOdd="even"
+                />
+
                 <MainProjectInfo
                   textHeight={textHeight}
                   project={projects[1]}
                   logo={portfolioImages["sudahnonton"].logo!}
                   visibility={isVisible2 && !isVisible}
+                  evenOdd="even"
                 />
               </div>
             </div>
@@ -154,33 +154,22 @@ const Home = (props: Props) => {
           }
         >
           <StraightLine />
-          <div className="project-content">
+          <div className="project-content" ref={myRef3}>
             <div className="project-content-inside ">
               <div className="project-info-outer">
-                <div
-                  className={
-                    isVisible3 && !isVisible2
-                      ? "image-visible"
-                      : "image-invisible "
-                  }
-                  ref={myRef3}
-                >
-                  <StaticImage
-                    src="../../src/images/rs-uripsumoharjo_monitor.jpg"
-                    alt="rs-uripsumoharjo_monitor"
-                    layout="constrained"
-                    placeholder="dominantColor"
-                    loading="lazy"
-                    objectFit="contain"
-                    className="h-full"
-                  />
-                </div>
+                <MainImageInfo
+                  visibility={isVisible3 && !isVisible2}
+                  imageCSS={textHeight.mainImage}
+                  imageName="rs-uripsumoharjo_monitor"
+                  evenOdd="odd"
+                />
 
                 <MainProjectInfo
                   textHeight={textHeight}
                   project={projects[2]}
                   logo={portfolioImages["rs-uripsumoharjo"].logo!}
                   visibility={isVisible3 && !isVisible2}
+                  evenOdd="odd"
                 />
               </div>
             </div>
@@ -196,32 +185,22 @@ const Home = (props: Props) => {
           }
         >
           <StraightLine />
-          <div className="project-content">
+          <div className="project-content" ref={myRef4}>
             <div className="project-content-inside">
               <div className="project-info-outer">
-                <div
-                  className={
-                    isVisible4 && !isVisible3
-                      ? "image-visible sm:order-3"
-                      : "image-invisible sm:order-3 "
-                  }
-                  ref={myRef4}
-                >
-                  <StaticImage
-                    src="../../src/images/azriclone_monitor.jpg"
-                    alt="azriclone_monitor"
-                    layout="constrained"
-                    placeholder="dominantColor"
-                    loading="lazy"
-                    objectFit="contain"
-                    className="h-full"
-                  />
-                </div>
+                <MainImageInfo
+                  visibility={isVisible4 && !isVisible3}
+                  imageCSS={textHeight.mainImage}
+                  imageName="azriclone_monitor"
+                  evenOdd="even"
+                />
+
                 <MainProjectInfo
                   textHeight={textHeight}
                   project={projects[3]}
                   logo={portfolioImages["azriclone"].logo!}
                   visibility={isVisible4 && !isVisible3}
+                  evenOdd="even"
                 />
               </div>
             </div>
@@ -229,7 +208,7 @@ const Home = (props: Props) => {
           <RightLine />
         </div>
 
-        <div className="h-20 sm:h-52 2xl:h-full w-full "></div>
+        <div className="h-20  2xl:h-60 w-full "></div>
       </div>
     );
   }

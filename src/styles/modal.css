@@ -1,0 +1,52 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  *,
+  *::after,
+  *::before {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    scroll-behavior: auto;
+  }
+  body {
+    @apply w-full h-screen bg-fillDrk text-textDrk font-normal;
+  }
+
+  h1 {
+    @apply capitalize text-3xl font-poppins font-semibold;
+  }
+  h2 {
+    @apply capitalize  text-2xl sm:text-3xl md:text-4xl  font-poppins font-medium text-center;
+  }
+  h3 {
+    @apply text-base md:text-lg lg:text-2xl font-poppins font-normal;
+  }
+  h4 {
+    @apply capitalize text-base font-poppins font-medium;
+  }
+  h5 {
+    @apply capitalize text-base font-poppins font-normal;
+  }
+}
+@layer components {
+  .modal-base {
+    @apply fixed top-0 left-0 w-full h-screen z-40 bg-fillDrkactive;
+  }
+  .modal-base-inside {
+    @apply h-full w-full relative;
+  }
+  .small-modal-container {
+    height: 650px;
+    @apply absolute bg-fillDrkSolid w-full max-w-xs rounded-lg top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2 px-1 pb-4;
+  }
+  .small-modal-img {
+    @apply w-full flex items-center justify-center mx-auto;
+  }
+  .modal-close-btn {
+    @apply bg-fillLit hover:bg-fillMed  text-textDrk absolute bottom-2 left-1/2 -translate-x-1/2 z-20 p-2 py-0;
+  }
+}

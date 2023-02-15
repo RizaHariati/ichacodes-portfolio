@@ -8,15 +8,18 @@ import { useGlobalContext } from "../../context/AppProvider";
 const Navbar = () => {
   const { pathname } = useLocation();
   const {
-    state: { allImages },
+    state: { allImages, scrollingUp },
   } = useGlobalContext();
 
   if (!allImages || (allImages && Object.keys(allImages).length < 1))
     return <div></div>;
   else {
     return (
-      <div className=" max-w-6xl mx-auto relative ">
-        <Link to="/" className="logo-container">
+      <div className=" max-w-6xl mx-auto relative z-20 ">
+        <Link
+          to="/"
+          className={scrollingUp ? "logo-container-hide" : "logo-container"}
+        >
           <div className="logo-img">
             <GatsbyImage
               image={allImages?.iconLink!}
@@ -30,7 +33,11 @@ const Navbar = () => {
             Icha<span className=" text-accent ">Codes</span>
           </h1>
         </Link>
-        <div className="navbar-link-container">
+        <div
+          className={
+            scrollingUp ? "navbar-link-container-hide" : "navbar-link-container"
+          }
+        >
           <a href="https://github.com/RizaHariati" className="icon-img">
             <div className="icon-btn">
               <StaticImage
@@ -74,13 +81,3 @@ const Navbar = () => {
 };
 
 export default Navbar;
-
-//  <div className="h-full flex items-center justify-between px-2 max-w-4xl 2xl:max-w-6xl mx-auto">
-//
-
-//           <div className="flex items-center justify-center gap-1">
-//
-<Social />;
-//           </div>
-//         </div>
-//         <div className=" bg-accent w-full h-0.5 rounded-full mb-auto"></div>

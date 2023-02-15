@@ -16,17 +16,16 @@ export type ImageType = {
 };
 
 export type PortfolioImageType = {
-  long?: IGatsbyImageData;
-  short?: IGatsbyImageData;
+  monitor?: IGatsbyImageData;
+  screenPhone?: IGatsbyImageData;
   mainphone?: IGatsbyImageData;
   logo?: IGatsbyImageData;
-  subphone?: IGatsbyImageData;
-  subpage?: IGatsbyImageData;
 };
 export type AllImageType = {
   iconImage?: IGatsbyImageData;
   iconLink?: IGatsbyImageData;
   profilePicSmall?: IGatsbyImageData;
+  magnifying?: IGatsbyImageData;
 };
 
 export type PortfolioType = {
@@ -35,6 +34,5 @@ export type PortfolioType = {
 
 export type ShowModalType = {
   status: boolean;
-  type: string;
-  value: IGatsbyImageData[];
+  value: string;
 };

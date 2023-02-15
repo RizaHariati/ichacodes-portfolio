@@ -10,7 +10,7 @@ module.exports = {
 
   theme: {
     transitionDuration: {
-      DEFAULT: "1500ms",
+      DEFAULT: "1000ms",
     },
 
     fontFamily: {
@@ -22,7 +22,7 @@ module.exports = {
         newPulse: "newPulse 1s linear 1",
         mainImage: "mainImage 1s ease-in-out 1  ",
         mainImageX: "mainImageX 0.5s linear 1",
-        mainImageXMin: "mainImageXMin 0.5s linear 1",
+        mainImageYMin: "mainImageYMin 0.5s linear 1",
       },
       keyframes: {
         newPulse: {
@@ -45,14 +45,16 @@ module.exports = {
             AnimationTimeline: "cubic-bezier(0, 0, 0.2, 1)",
           },
         },
-        mainImageXMin: {
+        mainImageYMin: {
           "0%": {
-            transform: "translateX(25%)",
+            transform: "translateY(-30%)",
             AnimationTimeline: "cubic-bezier(0.8, 0, 1, 1)",
+            opacity: "0.2",
           },
           "100%": {
-            transform: "translateX(0)",
+            transform: "translateY(0)",
             AnimationTimeline: "cubic-bezier(0, 0, 0.2, 1)",
+            opacity: "1",
           },
         },
         mainImage: {
@@ -60,7 +62,6 @@ module.exports = {
             transform: "translateY(20%)",
             AnimationTimeline: "cubic-bezier(0.8, 0, 1, 1)",
             opacity: "0",
-            delay: "3s",
           },
           "100%": {
             transform: "translateY(0)",
@@ -79,7 +80,9 @@ module.exports = {
         fillDrkSolid: "#1e293b",
         fillDrk: "#0f172a",
         fillDrkhover: "#1e293b",
-        fillDrkactive: "#a8a29e96",
+        fillMed: "#334155",
+        fillLit: "#475569",
+        fillDrkactive: "#94a3b883",
         accent: "#d4a99c",
         accentHover: "#C99383",
         accentActive: "#dfbeb5",
