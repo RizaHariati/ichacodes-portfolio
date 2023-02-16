@@ -43,7 +43,7 @@ const MainImageInfo = ({ visibility, imageCSS, imageName, evenOdd }: Props) => {
             image={allImages["magnifying"]!}
             alt={imageName}
             loading="lazy"
-            className="w-full"
+            className="h-full"
           />
         </button>
       </div>

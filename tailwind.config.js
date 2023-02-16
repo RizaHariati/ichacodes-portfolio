@@ -83,6 +83,7 @@ module.exports = {
         fillMed: "#334155",
         fillLit: "#475569",
         fillDrkactive: "#94a3b883",
+        darkBackgroundOpacity: "#0f172a9d",
         accent: "#d4a99c",
         accentHover: "#C99383",
         accentActive: "#dfbeb5",

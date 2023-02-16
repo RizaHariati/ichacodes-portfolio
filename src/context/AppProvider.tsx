@@ -16,7 +16,7 @@ export const result = graphql`
   query MyQuery {
     allImageSharp {
       nodes {
-        gatsbyImageData(placeholder: BLURRED, layout: CONSTRAINED)
+        gatsbyImageData(placeholder: DOMINANT_COLOR, layout: CONSTRAINED)
         original {
           src
         }
@@ -97,7 +97,6 @@ export const AppProvider = ({ children }: Props) => {
   };
 
   const setCloseModal = () => {
-    console.log("triggered");
     dispatch({
       type: "CLOSE_MODAL",
     });

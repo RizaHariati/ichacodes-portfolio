@@ -25,20 +25,25 @@ const Modal = (props: Props) => {
       <div className={status ? "modal-base  " : "modal-base hidden "}>
         <div className="modal-base-inside">
           {status && value && (
-            <div className="small-modal-container ">
+            <div
+              className={
+                window.innerHeight > 750
+                  ? "small-modal-container2"
+                  : "small-modal-container"
+              }
+            >
               <div className="small-modal-img animate-newPulse">
                 <GatsbyImage
                   image={portfolioImages[value].mainphone!}
                   alt={value}
                   loading="lazy"
                   objectFit="cover"
-                  className=" h-full"
+                  className="h-full"
                 />
               </div>
               <button
                 className="modal-close-btn"
                 onClick={() => {
-                  console.log("object");
                   setCloseModal();
                 }}
               >

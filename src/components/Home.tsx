@@ -49,9 +49,9 @@ const Home = (props: Props) => {
     (e: React.UIEvent<HTMLDivElement, UIEvent>) => {
       const window = e.currentTarget.scrollTop;
 
-      if (window >= 200) {
+      if (window >= 10) {
         setScrollingUp();
-      } else if (window < 300) {
+      } else if (window < 10) {
         setScrollingDown();
       }
     },
