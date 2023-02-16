@@ -23,6 +23,7 @@ module.exports = {
         mainImage: "mainImage 1s ease-in-out 1  ",
         mainImageX: "mainImageX 0.5s linear 1",
         mainImageYMin: "mainImageYMin 0.5s linear 1",
+        popImage: "popImage 0.5s linear 1",
       },
       keyframes: {
         newPulse: {
@@ -69,6 +70,16 @@ module.exports = {
             opacity: "1",
           },
         },
+        popImage: {
+          "0%": {
+            AnimationTimeline: "cubic-bezier(0.8, 0, 1, 1)",
+            scale: "0.4",
+          },
+          "100%": {
+            AnimationTimeline: "cubic-bezier(0, 0, 0.2, 1)",
+            scale: "1",
+          },
+        },
       },
       boxShadow: {
         outer: "2px 2px 6px 1px rgba(0, 0, 0, 0.3)",
@@ -81,9 +92,9 @@ module.exports = {
         fillDrk: "#0f172a",
         fillDrkhover: "#1e293b",
         fillMed: "#334155",
-        fillLit: "#475569",
+        fillLit: "#64748b",
         fillDrkactive: "#94a3b883",
-        darkBackgroundOpacity: "#0f172a9d",
+        darkBackgroundOpacity: "#0f172abe",
         accent: "#d4a99c",
         accentHover: "#C99383",
         accentActive: "#dfbeb5",

@@ -16,7 +16,11 @@ export const result = graphql`
   query MyQuery {
     allImageSharp {
       nodes {
-        gatsbyImageData(placeholder: DOMINANT_COLOR, layout: CONSTRAINED)
+        gatsbyImageData(
+          placeholder: DOMINANT_COLOR
+          layout: CONSTRAINED
+          quality: 72
+        )
         original {
           src
         }
