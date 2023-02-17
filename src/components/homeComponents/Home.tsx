@@ -18,8 +18,8 @@ export type TextHeightType = {
 };
 const options = {
   root: null,
-  rootMargin: "-55% 0px 0% 0px",
-  threshold: 0.1,
+  rootMargin: "0% 0px 0% 0px",
+  threshold: 0.2,
 };
 const Home = (props: Props) => {
   const [textHeight, settextHeight] = useState<TextHeightType>({
@@ -35,20 +35,15 @@ const Home = (props: Props) => {
   } = useGlobalContext();
   // const myRef: any = useRef(null);
 
-  const { ref: mainRef, inView: ismainVisible } = useInView({
-    root: null,
-    rootMargin: "-60%  0px 0% 0px",
-    threshold: 0.1,
-  });
-  const { ref: myRef, inView: isVisible } = useInView(options);
-  const { ref: myRef2, inView: isVisible2 } = useInView(options);
+  const { ref: myRef, inView: isVisible, entry: entry1 } = useInView(options);
+  const { ref: myRef2, inView: isVisible2, entry: entry2 } = useInView(options);
   const { ref: myRef3, inView: isVisible3 } = useInView(options);
   const { ref: myRef4, inView: isVisible4 } = useInView(options);
 
   const handleScroll = useCallback(
     (e: React.UIEvent<HTMLDivElement, UIEvent>) => {
+      e.preventDefault();
       const window = e.currentTarget.scrollTop;
-
       if (window >= 10) {
         setScrollingUp();
       } else if (window < 10) {
@@ -63,6 +58,12 @@ const Home = (props: Props) => {
     settextHeight(heightNew);
   }, [window.innerHeight]);
 
+  useEffect(() => {
+    if (isVisible2) {
+      window.screenTop;
+    }
+  }, [isVisible, isVisible2]);
+
   if (
     !portfolioImages ||
     (portfolioImages && Object.keys(portfolioImages).length < 1)
@@ -76,14 +77,14 @@ const Home = (props: Props) => {
           handleScroll(e);
         }}
       >
-        <div className="welcome-container" ref={mainRef}>
+        <div className="welcome-container">
           <MainProfileImage />
           <MainProfileInfo textHeight={textHeight} />
         </div>
         {/* --------------------------- project 1 -------------------------- */}
         <div
           className={
-            isVisible && !ismainVisible
+            isVisible
               ? "project-container h-screen 2xl:h-5/6 "
               : "project-container h-96"
           }
@@ -94,9 +95,9 @@ const Home = (props: Props) => {
           </div>
           <div className="project-content" ref={myRef}>
             <div className="project-content-inside">
-              <div className="project-info-outer">
+              <div className="project-info-outer overflow-hidden">
                 <MainImageInfo
-                  visibility={isVisible && !ismainVisible}
+                  visibility={isVisible}
                   imageCSS={textHeight.mainImage}
                   imageName="bayarplanner_monitor"
                   evenOdd="odd"
@@ -106,7 +107,7 @@ const Home = (props: Props) => {
                   textHeight={textHeight}
                   project={projects[0]}
                   logo={portfolioImages["bayarplanner"].logo!}
-                  visibility={isVisible && !ismainVisible}
+                  visibility={isVisible}
                   evenOdd="odd"
                 />
               </div>
@@ -117,7 +118,7 @@ const Home = (props: Props) => {
         {/* --------------------------- project 2-------------------------- */}
         <div
           className={
-            isVisible2 && !isVisible
+            isVisible2
               ? "project-container h-screen 2xl:h-4/6 "
               : "project-container "
           }
@@ -127,7 +128,7 @@ const Home = (props: Props) => {
             <div className="project-content-inside">
               <div className="project-info-outer">
                 <MainImageInfo
-                  visibility={isVisible2 && !isVisible}
+                  visibility={isVisible2}
                   imageCSS={textHeight.mainImage}
                   imageName="sudahnonton_monitor"
                   evenOdd="even"
@@ -137,7 +138,7 @@ const Home = (props: Props) => {
                   textHeight={textHeight}
                   project={projects[1]}
                   logo={portfolioImages["sudahnonton"].logo!}
-                  visibility={isVisible2 && !isVisible}
+                  visibility={isVisible2}
                   evenOdd="even"
                 />
               </div>
@@ -148,7 +149,7 @@ const Home = (props: Props) => {
         {/* --------------------------- project 3-------------------------- */}
         <div
           className={
-            isVisible3 && !isVisible2
+            isVisible3
               ? "project-container h-screen 2xl:h-4/6 "
               : "project-container "
           }
@@ -158,7 +159,7 @@ const Home = (props: Props) => {
             <div className="project-content-inside ">
               <div className="project-info-outer">
                 <MainImageInfo
-                  visibility={isVisible3 && !isVisible2}
+                  visibility={isVisible3}
                   imageCSS={textHeight.mainImage}
                   imageName="rs-uripsumoharjo_monitor"
                   evenOdd="odd"
@@ -168,7 +169,7 @@ const Home = (props: Props) => {
                   textHeight={textHeight}
                   project={projects[2]}
                   logo={portfolioImages["rs-uripsumoharjo"].logo!}
-                  visibility={isVisible3 && !isVisible2}
+                  visibility={isVisible3}
                   evenOdd="odd"
                 />
               </div>
@@ -179,7 +180,7 @@ const Home = (props: Props) => {
         {/* --------------------------- project 4-------------------------- */}
         <div
           className={
-            isVisible4 && !isVisible3
+            isVisible4
               ? "project-container h-screen 2xl:h-4/6 "
               : "project-container "
           }
@@ -189,7 +190,7 @@ const Home = (props: Props) => {
             <div className="project-content-inside">
               <div className="project-info-outer">
                 <MainImageInfo
-                  visibility={isVisible4 && !isVisible3}
+                  visibility={isVisible4}
                   imageCSS={textHeight.mainImage}
                   imageName="azriclone_monitor"
                   evenOdd="even"
@@ -199,7 +200,7 @@ const Home = (props: Props) => {
                   textHeight={textHeight}
                   project={projects[3]}
                   logo={portfolioImages["azriclone"].logo!}
-                  visibility={isVisible4 && !isVisible3}
+                  visibility={isVisible4}
                   evenOdd="even"
                 />
               </div>
