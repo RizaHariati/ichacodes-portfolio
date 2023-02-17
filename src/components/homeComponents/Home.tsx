@@ -1,13 +1,13 @@
 import React, { useState, useCallback } from "react";
-import { useGlobalContext } from "../context/AppProvider";
-import { projects } from "../data/data";
+import { useGlobalContext } from "../../context/AppProvider";
+import { projects } from "../../data/data";
 import { useInView } from "react-intersection-observer";
-import MainProfileImage from "./homeComponents/MainProfileImage";
-import MainProfileInfo from "./homeComponents/MainProfileInfo";
-import MainProjectInfo from "./homeComponents/MainProjectInfo";
+import MainProfileImage from "./MainProfileImage";
+import MainProfileInfo from "./MainProfileInfo";
+import MainProjectInfo from "./MainProjectInfo";
 import { useEffect } from "react";
-import { getHeightCSS } from "../utils/getHeightCSS";
-import MainImageInfo from "./homeComponents/MainImageInfo";
+import { getHeightCSS } from "../../utils/getHeightCSS";
+import MainImageInfo from "./MainImageInfo";
 
 type Props = {};
 export type TextHeightType = {

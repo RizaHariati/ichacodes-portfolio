@@ -14,9 +14,14 @@ const MainImageInfo = ({ visibility, imageCSS, imageName, evenOdd }: Props) => {
     setOpenModal,
     state: { portfolioImages, allImages },
   } = useGlobalContext();
-  const imageVisible = evenOdd === "odd" ? `${imageCSS} sm:order-3 ` : imageCSS;
+  const imageVisible =
+    evenOdd === "odd"
+      ? `${imageCSS} sm:order-3 origin-right `
+      : `${imageCSS} origin-left`;
   const imageInvisible =
-    evenOdd === "odd" ? `image-invisible sm:order-3 ` : "image-invisible";
+    evenOdd === "odd"
+      ? `image-invisible sm:order-3 origin-right`
+      : "image-invisible origin-left";
   if (
     !portfolioImages ||
     (portfolioImages && Object.keys(portfolioImages).length < 1)

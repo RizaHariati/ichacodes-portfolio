@@ -7,25 +7,26 @@ export const getHeightCSS = (inputHeight: number) => {
       mainImage: "image-visible",
     };
   }
-  if (inputHeight >= 460 && inputHeight < 550) {
+  if (inputHeight >= 460 && inputHeight < 680) {
     return {
       height: inputHeight,
       project: "project-description-short ",
-      mainInfo: "main-info-text leading-6 ",
+      mainInfo: "main-info-text leading-5 md:leading-7",
       mainImage: "image-visible",
     };
-  } else if (inputHeight >= 550 && inputHeight < 810) {
+  } else if (inputHeight >= 680 && inputHeight < 810) {
     return {
       height: inputHeight,
       project: "project-description-medium ",
-      mainInfo: "main-info-text leading-6 pb-10 md:text-xl ",
+      mainInfo: "main-info-text leading-5 pb-10  md:text-xl md:leading-7 ",
       mainImage: "image-visible sm:h-72",
     };
   } else {
     return {
       height: inputHeight,
       project: "project-description-high ",
-      mainInfo: "main-info-text leading-7 pb-20 text-xl md:text-2xl leading-8 ",
+      mainInfo:
+        "main-info-text leading-7 pb-20 text-lg md:text-xl sm:leading-8 2xl:leading-9",
       mainImage: "image-visible h-80",
     };
   }

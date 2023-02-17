@@ -1,7 +1,7 @@
 import React from "react";
 import { useGlobalContext } from "../context/AppProvider";
 import LoadingPage from "../components/LoadingPage";
-import Home from "../components/Home";
+import Home from "../components/homeComponents/Home";
 import Layout from "../components/layout/Layout";
 import { SEO } from "../components/seo/seo";
 import Modal from "../components/modalComponents/Modal";

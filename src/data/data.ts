@@ -46,7 +46,7 @@ export const projects: ProjectType[] = [
       "The core of this website design is Next.JS, supported by Redux Toolkit, Formik, Yup, and React leaflet",
     ],
     mainProgram: "Next.js",
-    dependencies: "Typescript, Tailwind CSS, Redux Toolkit, Formik/Yup",
+    dependencies: "Typescript, Tailwind CSS, Redux Toolkit",
   },
   {
     id: "IC004",
@@ -61,7 +61,7 @@ export const projects: ProjectType[] = [
       "Combining Typescript with Redux/toolkit, Redux/persist and Next Redux Wrapper, was a bit of a challenge for me, but turned out to be very useful for later use",
     ],
     mainProgram: "Next.js",
-    dependencies: "Tailwind CSS, Redux Toolkit, Redux Persist, Formik/Yup",
+    dependencies: "Tailwind CSS, Redux Toolkit, Redux Persist",
   },
 ];
 

@@ -23,6 +23,7 @@ const classModal: { [key: string]: { classSmall: string; classBig: string } } =
     },
   };
 const Modal = (props: Props) => {
+  const isBrowser = typeof window !== "undefined";
   const {
     setCloseModal,
     state: {
@@ -30,18 +31,16 @@ const Modal = (props: Props) => {
       openModal: { status, value },
     },
   } = useGlobalContext();
-  const [findClass, setfindClass] = useState("medium");
 
-  useEffect(() => {
-    const height = window.innerHeight;
+  const getWindowInnerHeart = (height: number) => {
     if (height < 600) {
-      setfindClass("short");
+      return "short";
     } else if (height >= 600 && height < 750) {
-      setfindClass("medium");
+      return "medium";
     } else {
-      setfindClass("tall");
+      return "tall";
     }
-  }, [window.innerHeight]);
+  };
 
   if (
     !portfolioImages ||
@@ -53,7 +52,11 @@ const Modal = (props: Props) => {
       <div className={status ? "modal-base  " : "modal-base hidden "}>
         <div className="modal-base-inside">
           {status && value && (
-            <div className={classModal[findClass].classSmall}>
+            <div
+              className={
+                classModal[getWindowInnerHeart(window.innerHeight)].classSmall
+              }
+            >
               <div className="small-modal-img animate-newPulse">
                 <GatsbyImage
                   image={portfolioImages[value].mainphone!}
@@ -74,7 +77,11 @@ const Modal = (props: Props) => {
             </div>
           )}
           {status && value && (
-            <div className={classModal[findClass].classBig}>
+            <div
+              className={
+                classModal[getWindowInnerHeart(window.innerHeight)].classBig
+              }
+            >
               <div className="big-modal-img ">
                 <GatsbyImage
                   image={portfolioImages[value].screenPhone!}

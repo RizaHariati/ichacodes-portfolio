@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { GatsbyImage, IGatsbyImageData } from "gatsby-plugin-image";
 import React from "react";
 import { ProjectType } from "../../context/types.d";
-import { TextHeightType } from "../Home";
+import { TextHeightType } from "./Home";
 
 type Props = {
   project: ProjectType;
@@ -54,8 +54,8 @@ const MainProjectInfo = ({
           <GatsbyImage
             image={logo!}
             alt={project.title}
-            objectFit="fill"
-            className="h-full w-full"
+            objectFit="cover"
+            className="h-full "
           />
         </div>
       </div>
@@ -73,20 +73,15 @@ const MainProjectInfo = ({
             }
           )}
         </div>
+        <div className="info-detail">
+          <p className="box-text">Main Program</p>
+          <p className=" text-textDrk"> {project.mainProgram}</p>
+        </div>
+        <div className="info-detail">
+          <p className=" box-text">Dependencies</p>
+          <p className=" text-textDrk">{project.dependencies.toString()}</p>
+        </div>
 
-        <p>
-          <span className="border border-accent rounded-sm px-1 w-48 mr-2">
-            Main Program&nbsp;
-          </span>
-          : {project.mainProgram}
-        </p>
-        <p>
-          <span className="border border-accent rounded-sm px-1 w-48 mr-2">
-            Dependencies&nbsp;
-          </span>
-          &nbsp;:&nbsp;
-          {project.dependencies.toString()}
-        </p>
         <a
           href={project.url}
           className={`standard-btn p-1 my-2 ${

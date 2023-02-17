@@ -72,12 +72,12 @@
     @apply w-full max-w-lg flex flex-col gap-1 h-full  p-2 md:p-5 2xl:p-10 mt-auto justify-start sm:justify-end;
   }
   .slide-logo {
-    @apply w-7 h-6 md:w-9 sm:h-8 mt-1 sm:mt-2 transition-all z-10 overflow-hidden bg-textDrk rounded-full object-cover;
+    @apply w-7 h-6 md:w-9 md:h-8 mt-1 sm:mt-2 md:mt-1 transition-all z-10 overflow-hidden bg-textDrk rounded-full object-cover;
   }
   .standard-btn {
     @apply flex items-center justify-center bg-accentHover bg-opacity-90 gap-2 w-28 sm:w-32  rounded-sm hover:bg-accentActive text-textDrk hover:text-textMed active:bg-fillDrkactive transition-all shadow-black shadow-sm text-sm 2xl:text-base;
   }
   .main-title-text {
-    @apply text-right w-full border-b-4 sm:border-b-textLit;
+    @apply text-right w-full border-b-2 sm:border-b-textLit text-xl md:text-2xl;
   }
 }

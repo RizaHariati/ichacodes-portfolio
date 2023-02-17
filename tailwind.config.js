@@ -23,7 +23,7 @@ module.exports = {
         mainImage: "mainImage 1s ease-in-out 1  ",
         mainImageX: "mainImageX 0.5s linear 1",
         mainImageYMin: "mainImageYMin 0.5s linear 1",
-        popImage: "popImage 0.5s linear 1",
+        popImage: "popImage 0.2s ease-in 1",
       },
       keyframes: {
         newPulse: {
@@ -85,9 +85,9 @@ module.exports = {
         outer: "2px 2px 6px 1px rgba(0, 0, 0, 0.3)",
       },
       colors: {
-        textDrk: "#f1f5f9",
-        textMed: "#cbd5e1",
-        textLit: "#cbd5e1",
+        textDrk: "#cbd5e1",
+        textMed: "#94a3b8",
+        textLit: "#94a3b8",
         fillDrkSolid: "#1e293b",
         fillDrk: "#0f172a",
         fillDrkhover: "#1e293b",
