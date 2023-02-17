@@ -5,12 +5,17 @@ import { SEO } from "../components/seo/seo";
 import { useGlobalContext } from "../context/AppProvider";
 import { aboutData } from "../data/data";
 import "../styles/aboutpage.css";
+import { useEffect } from "react";
 type Props = {};
 
 const about = (props: Props) => {
   const {
+    setScrollingDown,
     state: { allImages },
   } = useGlobalContext();
+  useEffect(() => {
+    setScrollingDown();
+  }, []);
 
   if (!allImages || (allImages && Object.keys(allImages).length < 1))
     return <div></div>;
@@ -55,40 +60,3 @@ export const Head = (props: HeadProps) => {
     </SEO>
   );
 };
-
-// <div className="about-container pb-10">
-//   <div className="about-me ">
-//     <div className="about-me-photo">
-//       <GatsbyImage
-//         image={allImages.profilePicSmall!}
-//         className="w-28 h-28 md:w-40 md:h-40  "
-//         objectFit="cover"
-//         objectPosition="center"
-//         alt="IchaIcon"
-//       />
-//     </div>
-//     <div className="about-me-message">
-//       {aboutData.message.map((item: string, index: number) => {
-//         return (
-//           <p
-//             className={index === 0 ? "font-bold" : "font-normal"}
-//             key={index}
-//           >
-//             {item}
-//           </p>
-//         );
-//       })}
-//     </div>
-//   </div>
-//   {Object.entries(aboutData)
-//     .slice(1)
-//     .map((item, index) => {
-//       return (
-//         <div key={index} className="about-skill ">
-//           <p className="capitalize col-span-1 font-bold">{item[0]}</p>
-
-//           <p className="capitalize col-span-8 font-normal">{item[1]}</p>
-//         </div>
-//       );
-//     })}
-// </div>;

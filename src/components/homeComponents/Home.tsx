@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from "react";
+import React, { useState, useCallback, useRef } from "react";
 import { useGlobalContext } from "../../context/AppProvider";
 import { projects } from "../../data/data";
 import { useInView } from "react-intersection-observer";
@@ -8,6 +8,7 @@ import MainProjectInfo from "./MainProjectInfo";
 import { useEffect } from "react";
 import { getHeightCSS } from "../../utils/getHeightCSS";
 import MainImageInfo from "./MainImageInfo";
+import { navigate } from "gatsby";
 
 type Props = {};
 export type TextHeightType = {
@@ -16,11 +17,17 @@ export type TextHeightType = {
   mainInfo: string;
   mainImage: string;
 };
+const optionsMain = {
+  root: null,
+  rootMargin: "0px 0px 0px 0px",
+  threshold: 0.8,
+};
 const options = {
   root: null,
-  rootMargin: "0% 0px 0% 0px",
-  threshold: 0.2,
+  rootMargin: "0px 0px 0px 0px",
+  threshold: 0.15,
 };
+
 const Home = (props: Props) => {
   const [textHeight, settextHeight] = useState<TextHeightType>({
     height: 700,
@@ -33,20 +40,20 @@ const Home = (props: Props) => {
     setScrollingUp,
     state: { portfolioImages },
   } = useGlobalContext();
-  // const myRef: any = useRef(null);
-
-  const { ref: myRef, inView: isVisible, entry: entry1 } = useInView(options);
-  const { ref: myRef2, inView: isVisible2, entry: entry2 } = useInView(options);
+  const ref: React.LegacyRef<HTMLDivElement> | undefined = useRef(null);
+  const { ref: mainRef, inView: isMainVisible } = useInView(optionsMain);
+  const { ref: myRef, inView: isVisible } = useInView(options);
+  const { ref: myRef2, inView: isVisible2 } = useInView(options);
   const { ref: myRef3, inView: isVisible3 } = useInView(options);
   const { ref: myRef4, inView: isVisible4 } = useInView(options);
 
   const handleScroll = useCallback(
     (e: React.UIEvent<HTMLDivElement, UIEvent>) => {
       e.preventDefault();
-      const window = e.currentTarget.scrollTop;
-      if (window >= 10) {
+      const scrollWindow = e.currentTarget.scrollTop;
+      if (scrollWindow >= 10) {
         setScrollingUp();
-      } else if (window < 10) {
+      } else if (scrollWindow < 10) {
         setScrollingDown();
       }
     },
@@ -58,12 +65,6 @@ const Home = (props: Props) => {
     settextHeight(heightNew);
   }, [window.innerHeight]);
 
-  useEffect(() => {
-    if (isVisible2) {
-      window.screenTop;
-    }
-  }, [isVisible, isVisible2]);
-
   if (
     !portfolioImages ||
     (portfolioImages && Object.keys(portfolioImages).length < 1)
@@ -72,19 +73,21 @@ const Home = (props: Props) => {
   } else {
     return (
       <div
+        ref={ref}
+        style={{ scrollBehavior: "smooth" }}
         className="main-page-container"
         onScroll={(e) => {
           handleScroll(e);
         }}
       >
-        <div className="welcome-container">
+        <div className="welcome-container" ref={mainRef}>
           <MainProfileImage />
           <MainProfileInfo textHeight={textHeight} />
         </div>
         {/* --------------------------- project 1 -------------------------- */}
         <div
           className={
-            isVisible
+            isVisible && !isMainVisible
               ? "project-container h-screen 2xl:h-5/6 "
               : "project-container h-96"
           }
@@ -97,7 +100,7 @@ const Home = (props: Props) => {
             <div className="project-content-inside">
               <div className="project-info-outer overflow-hidden">
                 <MainImageInfo
-                  visibility={isVisible}
+                  visibility={isVisible && !isMainVisible}
                   imageCSS={textHeight.mainImage}
                   imageName="bayarplanner_monitor"
                   evenOdd="odd"
@@ -107,7 +110,7 @@ const Home = (props: Props) => {
                   textHeight={textHeight}
                   project={projects[0]}
                   logo={portfolioImages["bayarplanner"].logo!}
-                  visibility={isVisible}
+                  visibility={isVisible && !isMainVisible}
                   evenOdd="odd"
                 />
               </div>
