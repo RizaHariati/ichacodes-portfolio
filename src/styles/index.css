@@ -2,9 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-html {
-  scroll-behavior: smooth;
-}
 *,
 *::after,
 *::before {
@@ -12,7 +9,6 @@ html {
   padding: 0;
   box-sizing: border-box;
   text-decoration: none;
-  scroll-behavior: smooth;
 }
 *::-webkit-scrollbar {
   display: none;

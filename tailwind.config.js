@@ -10,7 +10,7 @@ module.exports = {
 
   theme: {
     transitionDuration: {
-      DEFAULT: "1000ms",
+      DEFAULT: "1200ms",
     },
 
     fontFamily: {
@@ -82,7 +82,7 @@ module.exports = {
         },
       },
       boxShadow: {
-        outer: "2px 2px 6px 1px rgba(0, 0, 0, 0.3)",
+        outer: "2px 2px 6px 1px #0f172abe",
       },
       colors: {
         textDrk: "#cbd5e1",
