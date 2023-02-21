@@ -35,8 +35,8 @@ const Home = (props: Props) => {
     setScrollingUp,
     state: { portfolioImages },
   } = useGlobalContext();
-  const ref: React.LegacyRef<HTMLDivElement> | undefined = useRef(null);
 
+  const ref: React.LegacyRef<HTMLDivElement> | undefined = useRef(null);
   const [visibilities, setVisibilities] = useState<VisibilityKeyType>({
     welcome: { visibility: true },
     bayarplanner: { visibility: false },
@@ -48,6 +48,7 @@ const Home = (props: Props) => {
   const handleScroll = useCallback(
     (e: React.UIEvent<HTMLDivElement, UIEvent>) => {
       e.preventDefault();
+
       const scrollWindow = e.currentTarget.scrollTop;
       if (scrollWindow >= 10) {
         setScrollingUp();
@@ -60,27 +61,29 @@ const Home = (props: Props) => {
 
   useEffect(() => {
     let observerOptions: IntersectionOptions = {
-      rootMargin: "0%",
-      threshold: 0.6,
-      delay: 50,
+      rootMargin: "0px",
+      threshold: 0.3,
     };
 
     const observerCallback = function (entries: IntersectionObserverEntry[]) {
       entries.forEach((item: IntersectionObserverEntry) => {
         let newVisibility: VisibilityKeyType = visibilities;
+
         if (item.isIntersecting) {
           newVisibility[item.target.id] = { visibility: true };
         } else {
           newVisibility[item.target.id] = { visibility: false };
         }
-        if (newVisibility && Object.keys(newVisibility).length > 0) {
-          console.log(visibilities);
-          setVisibilities(newVisibility);
-        }
+
+        setVisibilities({ ...newVisibility });
       });
     };
     var observer = new IntersectionObserver(observerCallback, observerOptions);
-    Array.from(ref.current!.children).forEach((item) => observer.observe(item));
+    Array.from(ref.current!.children).forEach((item) => {
+      observer.observe(item);
+
+      // return observer.unobserve(item);
+    });
   }, []);
 
   useEffect(() => {

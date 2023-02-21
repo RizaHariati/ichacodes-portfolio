@@ -1,6 +1,5 @@
 import React from "react";
 import { GatsbyImage, StaticImage } from "gatsby-plugin-image";
-import Social from "./layoutComponents/Social";
 import { Link } from "gatsby";
 import { useLocation } from "@reach/router";
 import { useGlobalContext } from "../../context/AppProvider";
@@ -50,7 +49,7 @@ const Navbar = () => {
             </div>
           </a>
           <a
-            href="https://www.linkedin.com/in/riza-hariati-2021/"
+            href="https://ww w.linkedin.com/in/riza-hariati-2021/"
             className="icon-img"
           >
             <div className="icon-btn">
