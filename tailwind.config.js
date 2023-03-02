@@ -24,8 +24,21 @@ module.exports = {
         mainImageX: "mainImageX 0.5s linear 1",
         mainImageYMin: "mainImageYMin 0.5s linear 1",
         popImage: "popImage 0.2s ease-in 1",
+        projectEnter: "projectEnter 0.5s ease-in 1",
       },
       keyframes: {
+        projectEnter: {
+          "0%": {
+            transform: "translateY(100%)",
+            AnimationTimeline: "cubic-bezier(0.8, 0, 1, 1)",
+            opacity: "0",
+          },
+          "100%": {
+            transform: "translateY(0)",
+            AnimationTimeline: "cubic-bezier(0, 0, 0.2, 1)",
+            opacity: "1",
+          },
+        },
         newPulse: {
           "0%": {
             opacity: "0.2",

@@ -7,18 +7,15 @@ import { useGlobalContext } from "../../context/AppProvider";
 const Navbar = () => {
   const { pathname } = useLocation();
   const {
-    state: { allImages, scrollingUp },
+    state: { allImages, scrollPosition, scrollingUp },
   } = useGlobalContext();
-
+  console.log(scrollingUp);
   if (!allImages || (allImages && Object.keys(allImages).length < 1))
     return <div></div>;
   else {
     return (
       <div className=" max-w-6xl mx-auto relative z-20 ">
-        <Link
-          to="/"
-          className={scrollingUp ? "logo-container-hide" : "logo-container"}
-        >
+        <Link to="/" className="logo-container animate-mainImageX">
           <div className="logo-img">
             <GatsbyImage
               image={allImages?.iconLink!}
@@ -32,11 +29,7 @@ const Navbar = () => {
             Icha<span className=" text-accent ">Codes</span>
           </h1>
         </Link>
-        <div
-          className={
-            scrollingUp ? "navbar-link-container-hide" : "navbar-link-container"
-          }
-        >
+        <div className="navbar-link-container animate-projectEnter">
           <a href="https://github.com/RizaHariati" className="icon-img">
             <div className="icon-btn">
               <StaticImage

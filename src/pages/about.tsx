@@ -1,21 +1,15 @@
-import { GatsbyImage } from "gatsby-plugin-image";
 import React from "react";
 import Layout from "../components/layout/Layout";
 import { SEO } from "../components/seo/seo";
 import { useGlobalContext } from "../context/AppProvider";
 import { aboutData } from "../data/data";
 import "../styles/aboutpage.css";
-import { useEffect } from "react";
 type Props = {};
 
 const about = (props: Props) => {
   const {
-    setScrollingDown,
     state: { allImages },
   } = useGlobalContext();
-  useEffect(() => {
-    setScrollingDown();
-  }, []);
 
   if (!allImages || (allImages && Object.keys(allImages).length < 1))
     return <div></div>;

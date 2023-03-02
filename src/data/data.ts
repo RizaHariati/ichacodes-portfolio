@@ -1,6 +1,7 @@
 import { ProjectType } from "../context/types.d";
 export const projects: ProjectType[] = [
   {
+    index: 0,
     id: "IC001",
     url: "https://bayarPlanner.com/",
     title: "BayarPlanner",
@@ -17,6 +18,7 @@ export const projects: ProjectType[] = [
       "Tailwind CSS,Typescript, useContext, useReducer, React datepicker",
   },
   {
+    index: 1,
     id: "IC002",
     url: "https://sudahnonton.ichacodes.com/",
     title: "SudahNonton",
@@ -33,6 +35,7 @@ export const projects: ProjectType[] = [
   },
 
   {
+    index: 2,
     id: "IC003",
 
     url: "https://rsuripsumoharjo-model.netlify.app/",
@@ -49,6 +52,7 @@ export const projects: ProjectType[] = [
     dependencies: "Typescript, Tailwind CSS, Redux Toolkit",
   },
   {
+    index: 3,
     id: "IC004",
     url: "https://azriclone.netlify.app/",
     title: "AzriClone",

@@ -1,6 +1,7 @@
 import { IGatsbyImageData } from "gatsby-plugin-image";
 
 export type ProjectType = {
+  index: number;
   id: string;
   url: string;
   title: string;

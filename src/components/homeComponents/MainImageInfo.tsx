@@ -2,46 +2,41 @@ import { GatsbyImage } from "gatsby-plugin-image";
 
 import React from "react";
 import { useGlobalContext } from "../../context/AppProvider";
+import { PortfolioImageType } from "../../context/types.d";
+
 type Props = {
-  visibility: boolean;
-  imageCSS: string;
+  portfolioImage: PortfolioImageType;
   imageName: string;
   evenOdd: "even" | "odd";
 };
 
-const MainImageInfo = ({ visibility, imageCSS, imageName, evenOdd }: Props) => {
+const MainImageInfo = ({ portfolioImage, imageName, evenOdd }: Props) => {
+  const {
+    textHeight: { mainImage },
+  } = useGlobalContext();
+
   const {
     setOpenModal,
-    state: { portfolioImages, allImages },
+    state: { allImages },
   } = useGlobalContext();
   const imageVisible =
     evenOdd === "odd"
-      ? `${imageCSS} sm:order-3 origin-right `
-      : `${imageCSS} origin-left`;
-  const imageInvisible =
-    evenOdd === "odd"
-      ? `image-invisible sm:order-3 origin-right`
-      : "image-invisible origin-left";
-  if (
-    !portfolioImages ||
-    (portfolioImages && Object.keys(portfolioImages).length < 1)
-  ) {
+      ? `${mainImage} sm:order-3 origin-right `
+      : `${mainImage} origin-left`;
+
+  if (!allImages || (allImages && Object.keys(allImages).length < 1)) {
     return <div></div>;
   } else {
     return (
-      <div className={visibility ? imageVisible : imageInvisible}>
+      <div className={imageVisible}>
         <GatsbyImage
-          image={portfolioImages[imageName.slice(0, -8)].monitor!}
+          image={portfolioImage.monitor!}
           alt={imageName}
-          loading="lazy"
+          loading="eager"
           className="w-full"
         />
         <button
-          className={
-            visibility
-              ? "magnifying-btn"
-              : "absolute opacity-0 bottom-10 right-16 transition-all"
-          }
+          className="magnifying-btn"
           onClick={() => setOpenModal(imageName.slice(0, -8))}
         >
           <GatsbyImage

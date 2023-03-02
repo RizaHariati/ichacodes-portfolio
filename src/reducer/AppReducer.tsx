@@ -1,4 +1,5 @@
 import { AppState } from "../context/interfaces";
+import { projects } from "../data/data";
 
 interface OpenModalAction {
   type: string;
@@ -14,6 +15,14 @@ export const appReducer = (state: AppState, action: OpenModalAction) => {
     };
   }
 
+  if (action.type === "SET_SCROLL_POSITION") {
+    const position = action.payload;
+
+    return {
+      ...state,
+      scrollPosition: position,
+    };
+  }
   if (action.type === "SET_SCROLL_UP") {
     return {
       ...state,

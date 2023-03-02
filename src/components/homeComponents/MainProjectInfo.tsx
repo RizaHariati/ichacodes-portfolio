@@ -1,44 +1,23 @@
 import { faPaperPlane } from "@fortawesome/free-regular-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { GatsbyImage, IGatsbyImageData } from "gatsby-plugin-image";
+import { GatsbyImage } from "gatsby-plugin-image";
 import React from "react";
-import { ProjectType } from "../../context/types.d";
-import { TextHeightType } from "./Home";
+import { useGlobalContext } from "../../context/AppProvider";
+import { PortfolioImageType, ProjectType } from "../../context/types.d";
 
 type Props = {
   project: ProjectType;
-  logo: IGatsbyImageData;
-  visibility: boolean;
-  textHeight: TextHeightType;
+  portfolioImage: PortfolioImageType;
   evenOdd: "even" | "odd";
 };
 
-const MainProjectInfo = ({
-  project,
-  logo,
-  visibility,
-  textHeight,
-  evenOdd,
-}: Props) => {
+const MainProjectInfo = ({ project, portfolioImage, evenOdd }: Props) => {
+  const { textHeight } = useGlobalContext();
   return (
-    <div
-      className={
-        visibility
-          ? `slide-container animate-mainImage  ${
-              evenOdd === "odd"
-                ? " sm:animate-mainImageYMin"
-                : " sm:animate-mainImageYMin order-3"
-            }`
-          : "slide-container  max-w-full"
-      }
-    >
+    <div className="slide-container ">
       <div
         className={`flex flex-row gap-2 sm:gap-4 w-full ${
-          !visibility
-            ? evenOdd === "odd"
-              ? "sm:pr-8 md:pr-14"
-              : "sm:pl-8 md:pl-14"
-            : "pl-3 pr-3  sm:pl-4 sm:pr-4 "
+          evenOdd === "odd" ? "sm:pr-8 md:pr-14" : "sm:pl-8 md:pl-14"
         }`}
       >
         <h2
@@ -52,20 +31,14 @@ const MainProjectInfo = ({
         </h2>
         <div className="slide-logo ">
           <GatsbyImage
-            image={logo!}
+            image={portfolioImage.logo!}
             alt={project.title}
             objectFit="cover"
             className="h-full "
           />
         </div>
       </div>
-      <div
-        className={
-          visibility
-            ? "project-info-container h-fit"
-            : "project-info-container h-0"
-        }
-      >
+      <div className="project-info-container h-fit">
         <div className={textHeight.project}>
           {project.description.map(
             (projectItem: string, projectIndex: number) => {

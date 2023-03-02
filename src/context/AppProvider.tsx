@@ -1,5 +1,5 @@
-import { graphql, useStaticQuery } from "gatsby";
-import React, { useContext, useReducer } from "react";
+import { graphql, useStaticQuery, navigate } from "gatsby";
+import React, { useContext, useReducer, useState, useCallback } from "react";
 import { appReducer } from "../reducer/AppReducer";
 import { AppContext } from "./AppContext";
 import { initialState } from "./initialstate";
@@ -7,6 +7,9 @@ import { useEffect } from "react";
 import { projects } from "../data/data";
 import { ImageType, ProjectType, PortfolioType, AllImageType } from "./types.d";
 import { getImage } from "gatsby-plugin-image";
+
+import { TextHeightType } from "../components/homeComponents/Home";
+import { getHeightCSS } from "../utils/getHeightCSS";
 
 interface Props {
   children: JSX.Element | JSX.Element[];
@@ -31,9 +34,20 @@ export const result = graphql`
 
 export const AppProvider = ({ children }: Props) => {
   const [state, dispatch] = useReducer(appReducer, initialState);
+  const [textHeight, settextHeight] = useState<TextHeightType>({
+    height: 700,
+    project: "project-description-medium",
+    mainInfo: "main-info-text ",
+    mainImage: "image-visible",
+  });
   const {
     allImageSharp: { nodes },
   } = useStaticQuery(result);
+
+  useEffect(() => {
+    const heightNew = getHeightCSS(window.innerHeight);
+    settextHeight(heightNew);
+  }, [window.innerHeight]);
 
   useEffect(() => {
     if (
@@ -113,13 +127,41 @@ export const AppProvider = ({ children }: Props) => {
     });
   };
 
+  const handleScroll = (
+    e: React.UIEvent<HTMLDivElement, UIEvent>,
+    indexPage: number
+  ) => {
+    e.preventDefault();
+    const childHeight = e.currentTarget.firstElementChild?.clientHeight!;
+    const scrollHeight = e.currentTarget.scrollTop;
+    const windowHeight = e.currentTarget.clientHeight;
+    const scrollTotal = scrollHeight + windowHeight;
+
+    if (scrollTotal <= state.scrollPosition && scrollTotal === windowHeight) {
+      if (indexPage === 0) {
+        navigate(`/`);
+        setScrollingUp();
+      } else if (indexPage > 0) {
+        navigate(`/projects/${projects[indexPage - 1].slug}`);
+      }
+    } else {
+      if (scrollTotal >= childHeight - 10 && indexPage < projects.length - 1) {
+        setScrollingDown();
+        navigate(`/projects/${projects[indexPage + 1].slug}`);
+      }
+    }
+    dispatch({
+      type: "SET_SCROLL_POSITION",
+      payload: scrollTotal,
+    });
+  };
   const value = {
     state,
     dispatch,
-    setScrollingDown,
-    setScrollingUp,
     setCloseModal,
     setOpenModal,
+    textHeight,
+    handleScroll,
   };
   return <AppContext.Provider value={value}>{children}</AppContext.Provider>;
 };
