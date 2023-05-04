@@ -12,9 +12,19 @@ type Props = {
 };
 
 const MainProjectInfo = ({ project, portfolioImage, evenOdd }: Props) => {
-  const { textHeight } = useGlobalContext();
+  const {
+    textHeight,
+    state: { oldIndexNumber },
+  } = useGlobalContext();
+
   return (
-    <div className="slide-container ">
+    <div
+      className={
+        (oldIndexNumber ? oldIndexNumber : project.index) <= project.index
+          ? "slide-container animate-projectExit"
+          : "slide-container animate-projectEnter"
+      }
+    >
       <div
         className={`flex flex-row gap-2 sm:gap-4 w-full ${
           evenOdd === "odd" ? "sm:pr-8 md:pr-14" : "sm:pl-8 md:pl-14"
@@ -48,16 +58,18 @@ const MainProjectInfo = ({ project, portfolioImage, evenOdd }: Props) => {
         </div>
         <div className="info-detail">
           <p className="box-text">Main Program</p>
-          <p className=" text-textDrk"> {project.mainProgram}</p>
+          <p className=" text-textLit leading-4"> {project.mainProgram}</p>
         </div>
         <div className="info-detail">
           <p className=" box-text">Dependencies</p>
-          <p className=" text-textDrk">{project.dependencies.toString()}</p>
+          <p className=" text-textLit leading-4 ">
+            {project.dependencies.toString()}
+          </p>
         </div>
 
         <a
           href={project.url}
-          className={`standard-btn p-1 my-2 ${
+          className={`standard-btn p-1 mb-2 ${
             evenOdd === "odd" ? "mr-auto" : "ml-auto"
           }`}
         >

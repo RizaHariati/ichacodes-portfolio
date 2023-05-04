@@ -42,39 +42,39 @@
 
   .project-container {
     height: 100vh;
-    @apply flex flex-col bg-fillDrk;
+    @apply flex flex-col bg-fillDrk snap-mandatory snap-start transition-all px-3;
   }
   .project-container-short {
     height: 90vh;
-    @apply flex flex-col bg-fillDrk;
+    @apply flex flex-col bg-fillDrk snap-mandatory snap-start transition-all px-3;
   }
   .project-content {
-    @apply w-full grid grid-cols-2 h-full bg-fillDrkSolid rounded-md overflow-hidden;
+    @apply w-full grid grid-cols-1 sm:grid-cols-2 h-full bg-fillDrkSolid rounded-md overflow-hidden transition-all shadow-md;
   }
 
-  .project-content-inside {
-    @apply w-full;
+  .project-base-container {
+    @apply h-fit w-full transition-all;
   }
 
   .project-description-supershort {
-    @apply w-full;
+    @apply w-full flex-col text-sm leading-4 gap-1 text-textMed;
   }
   .project-description-short {
-    @apply w-full;
+    @apply w-full leading-4  text-textMed flex-col text-sm  md:text-base 2xl:text-lg 2xl:leading-5  h-fit;
   }
   .project-description-medium {
-    @apply w-full;
+    @apply w-full leading-5  text-textMed flex-col  text-base 2xl:text-lg;
   }
   .project-description-high {
-    @apply w-full;
+    @apply w-full text-textMed flex-col text-base leading-7 md:text-xl;
   }
   .image-visible {
-    @apply h-fit w-full transition-all bg-fillDrkSolid mb-auto resize-y object-cover object-center p-0 mx-auto px-0 relative;
+    @apply h-fit w-full transition-all bg-fillDrkSolid mb-auto object-cover object-center p-0 mx-auto px-0 relative rounded-md overflow-hidden shadow-md;
   }
   .image-invisible {
     @apply h-fit w-64 sm:w-96 p-0 sm:p-5 px-0 sm:px-10 transition-all bg-fillDrkSolid resize-y object-cover object-center mx-auto relative;
   }
   .magnifying-btn {
-    @apply absolute w-20 h-20  lg:w-24 lg:h-24  block bottom-3 right-8  md:right-12 opacity-100 transition-all hover:opacity-70 hover:-translate-y-1 active:opacity-90 active:translate-y-1 origin-top;
+    @apply absolute w-20 h-20  lg:w-24 lg:h-24  block bottom-3 right-8  md:right-12 opacity-100 transition-all hover:opacity-70 hover:-translate-y-1 active:opacity-90 active:translate-y-1 origin-top bg-transparent;
   }
 }

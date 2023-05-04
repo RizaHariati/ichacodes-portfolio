@@ -5,7 +5,7 @@ type Props = {};
 const Footer = (props: Props) => {
   return (
     <div className="block footer-container">
-      <div className=" bg-accent w-full h-0.5 rounded-full mb-1"></div>
+      <div className=" bg-accentHover w-full h-0.5 rounded-full mb-1"></div>
       <div className="footer-content">
         <p className="footer-item">
           Powered by Gatsby.JS copyright &copy;{new Date().getFullYear()}{" "}

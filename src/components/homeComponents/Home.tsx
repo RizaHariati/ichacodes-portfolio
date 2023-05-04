@@ -48,7 +48,6 @@ const Home = (props: Props) => {
       >
         <div className="welcome-container" id="welcome">
           <MainProfileImage />
-
           <MainProfileInfo textHeight={textHeight} />
         </div>
         {/* --------------------------- project 1 -------------------------- */}

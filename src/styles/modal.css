@@ -42,31 +42,31 @@
     height: 600px;
     width: 270px;
 
-    @apply absolute bg-fillDrkSolid rounded-lg top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2 p-2 pr-1 shadow-fillLit shadow-inner sm:hidden overflow-hidden animate-popImage origin-top-left;
+    @apply absolute bg-textDrk rounded-lg top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2 p-2 pr-1 shadow-black shadow-inner sm:hidden overflow-hidden animate-popImage origin-top-left;
   }
   .small-modal-container2 {
     height: 750px;
     width: 340px;
 
-    @apply absolute bg-fillDrkSolid rounded-lg top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2 p-2 pr-1 shadow-fillLit shadow-inner sm:hidden overflow-hidden animate-popImage origin-top-left;
+    @apply absolute bg-textDrk rounded-lg top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2 p-2 pr-1 shadow-black shadow-inner sm:hidden overflow-hidden animate-popImage origin-top-left;
   }
   .small-modal-img {
     @apply h-full flex items-center justify-center mx-auto;
   }
   .modal-close-btn {
-    @apply bg-fillLit hover:bg-fillMed  text-textDrk absolute bottom-2 left-1/2 -translate-x-1/2 z-20 p-2 py-0;
+    @apply bg-fillLit hover:bg-fillMed  text-fillDrkSolid absolute bottom-2 left-1/2 -translate-x-1/2 z-20 p-2 py-0;
   }
   .big-modal-container {
     height: 600px;
     width: 1000px;
 
-    @apply absolute bg-fillDrkSolid rounded-lg top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2 shadow-fillLit shadow-inner hidden sm:block  overflow-hidden p-5 animate-popImage origin-top-left;
+    @apply absolute bg-textDrk rounded-lg top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2 shadow-black shadow-inner hidden sm:block  overflow-hidden p-5 animate-popImage origin-top-left;
   }
   .big-modal-container2 {
     height: 750px;
     width: 1200px;
 
-    @apply absolute bg-fillDrkSolid rounded-lg top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2 shadow-fillLit shadow-inner  hidden sm:block overflow-hidden p-5 animate-popImage origin-top-left;
+    @apply absolute bg-textDrk rounded-lg top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2 shadow-black shadow-inner  hidden sm:block overflow-hidden p-5 animate-popImage origin-top-left;
   }
 
   .big-modal-container3 {

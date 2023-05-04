@@ -60,12 +60,12 @@
     @apply w-10 h-10 ml-auto md:w-12 md:h-12;
   }
   .navbar-link-container {
-    @apply absolute right-0 top-16 w-14 md:w-16 h-52  2xl:h-64 z-30 flex flex-col gap-3 border-l-2 border-accent transition-all;
+    @apply absolute right-0 top-16 w-14 md:w-16 h-52  2xl:h-64 z-30 flex flex-col gap-3 border-l-2 border-accentHover transition-all;
   }
 
   .navbar-link-container-hide {
     height: 70vh;
-    @apply absolute -right-24 top-16 w-14 md:w-16  z-30 flex flex-col gap-3 border-l-2 border-accent transition-all;
+    @apply absolute -right-24 top-16 w-14 md:w-16  z-30 flex flex-col gap-3 border-l-2 border-accentHover transition-all;
   }
   .slide-container {
     @apply w-full max-w-lg flex flex-col gap-1 h-full  p-2 md:p-5 2xl:p-10 mt-auto justify-start sm:justify-end;
@@ -74,7 +74,7 @@
     @apply w-7 h-6 md:w-9 md:h-8 mt-1 sm:mt-2 md:mt-1 transition-all z-10 overflow-hidden bg-textDrk rounded-full object-cover;
   }
   .standard-btn {
-    @apply flex items-center justify-center bg-accentHover bg-opacity-90 gap-2 w-28 sm:w-32  rounded-sm hover:bg-accentActive text-textDrk hover:text-textMed active:bg-fillDrkactive transition-all shadow-black shadow-sm text-sm 2xl:text-base;
+    @apply flex items-center justify-center bg-button bg-opacity-90 gap-2 w-28 sm:w-32  rounded-sm hover:bg-buttonHover text-fillDrkSolid hover:text-fillDrkactive active:bg-fillDrkactive transition-all  shadow-md text-sm 2xl:text-base;
   }
   .main-title-text {
     @apply text-right w-full border-b-2 sm:border-b-textLit text-xl md:text-2xl;

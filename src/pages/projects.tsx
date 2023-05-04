@@ -1,30 +1,27 @@
-import React, { useRef, useEffect } from "react";
+import React, { useRef, useEffect, useState } from "react";
 import { useGlobalContext } from "../context/AppProvider";
 import { SEO } from "../components/seo/seo";
 import "../styles/projectpage.css";
 import ProjectBase from "../components/projectComponents/ProjectBase";
 import ProjectFrame from "../components/projectComponents/ProjectFrame";
-import MainImageInfo from "../components/homeComponents/MainImageInfo";
-import MainProjectInfo from "../components/homeComponents/MainProjectInfo";
-import { IntersectionOptions, useInView } from "react-intersection-observer";
-import { StraightLine } from "../components/homeComponents/MainProjectItem";
+
 import { projects } from "../data/data";
+import ProjectContent from "../components/projectComponents/ProjectContent";
 
 const Projects = ({ pageContext: { project } }: any) => {
   // page context didapat dari gatsby-none
 
   const {
-    textHeight,
     handleScroll,
-    state: { portfolioImages },
+    state: { scrollingUp, portfolioImages, oldIndexNumber },
   } = useGlobalContext();
-  let observerOptions: IntersectionOptions = {
-    rootMargin: "0px",
-    threshold: 1,
-  };
   const ref: React.LegacyRef<HTMLDivElement> | undefined = useRef(null);
   useEffect(() => {
-    ref.current?.scrollIntoView({ inline: "end", behavior: "smooth" });
+    if (!scrollingUp) {
+    }
+    setTimeout(() => {
+      ref.current?.scrollIntoView({ behavior: "smooth", block: "nearest" });
+    }, 600);
   }, []);
 
   if (
@@ -33,7 +30,6 @@ const Projects = ({ pageContext: { project } }: any) => {
   ) {
     return <div></div>;
   } else {
-    const evenOdd = project.index % 2 === 0 ? "odd" : "even";
     return (
       <div
         className="h-screen w-full overflow-y-scroll scroll-auto"
@@ -42,31 +38,27 @@ const Projects = ({ pageContext: { project } }: any) => {
         }}
       >
         {/* --------- don't delete this. This is for the scrolling --------- */}
-        <div className="h-fit w-full ">
+        <div
+          className={
+            (oldIndexNumber ? oldIndexNumber : project.index) <= project.index
+              ? "project-base-container animate-projectExit  "
+              : "project-base-container animate-projectEnter "
+          }
+        >
           <ProjectBase>
             <ProjectFrame indexNumber={project.index}>
               <div
                 className={
                   project.index !== projects.length - 1
-                    ? "project-container"
-                    : "project-container-short"
+                    ? "project-container z-20"
+                    : "project-container-short  z-20"
                 }
                 ref={ref}
               >
-                <StraightLine />
-                <div className="project-content">
-                  <MainImageInfo
-                    imageName={project.slug}
-                    evenOdd={evenOdd}
-                    portfolioImage={portfolioImages[project.slug]}
-                  />
-                  <MainProjectInfo
-                    evenOdd={evenOdd}
-                    portfolioImage={portfolioImages[project.slug]}
-                    project={project}
-                  />
-                </div>
-                {project.index !== projects.length - 1 && <StraightLine />}
+                <ProjectContent
+                  project={project}
+                  portfolioImage={portfolioImages[project.slug]}
+                />
               </div>
             </ProjectFrame>
           </ProjectBase>

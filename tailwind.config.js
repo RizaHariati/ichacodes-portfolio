@@ -25,16 +25,31 @@ module.exports = {
         mainImageYMin: "mainImageYMin 0.5s linear 1",
         popImage: "popImage 0.2s ease-in 1",
         projectEnter: "projectEnter 0.5s ease-in 1",
+        projectExit: "projectExit 0.5s ease-in 1",
       },
       keyframes: {
         projectEnter: {
           "0%": {
-            transform: "translateY(100%)",
+            transform: "translateY(-30%)",
             AnimationTimeline: "cubic-bezier(0.8, 0, 1, 1)",
             opacity: "0",
           },
+
           "100%": {
-            transform: "translateY(0)",
+            transform: "translateY(0%)",
+            AnimationTimeline: "cubic-bezier(0, 0, 0.2, 1)",
+            opacity: "1",
+          },
+        },
+        projectExit: {
+          "0%": {
+            transform: "translateY(10%)",
+            AnimationTimeline: "cubic-bezier(0.8, 0, 1, 1)",
+            opacity: "0",
+          },
+
+          "100%": {
+            transform: "translateY(0%)",
             AnimationTimeline: "cubic-bezier(0, 0, 0.2, 1)",
             opacity: "1",
           },
@@ -73,7 +88,7 @@ module.exports = {
         },
         mainImage: {
           "0%": {
-            transform: "translateY(20%)",
+            transform: "translateY(10%)",
             AnimationTimeline: "cubic-bezier(0.8, 0, 1, 1)",
             opacity: "0",
           },
@@ -98,16 +113,19 @@ module.exports = {
         outer: "2px 2px 6px 1px #0f172abe",
       },
       colors: {
-        textDrk: "#cbd5e1",
-        textMed: "#94a3b8",
-        textLit: "#94a3b8",
-        fillDrkSolid: "#1e293b",
-        fillDrk: "#0f172a",
+        textDrk: "#1e293b",
+        textMed: "#484943",
+        textLit: "#7C7D6D",
+        fillDrkSolid: "#F3F4EF",
+        fillDrk: "#BFBAB7",
         fillDrkhover: "#1e293b",
         fillMed: "#334155",
         fillLit: "#64748b",
-        fillDrkactive: "#94a3b883",
-        darkBackgroundOpacity: "#0f172abe",
+        fillDrkactive: "#FDFCFB",
+        darkBackgroundOpacity: "#c8cabc94",
+        button: "#7C7D6D",
+        buttonHover: "#96988A",
+        buttonActive: "#545750",
         accent: "#d4a99c",
         accentHover: "#C99383",
         accentActive: "#dfbeb5",

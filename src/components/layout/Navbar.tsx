@@ -9,7 +9,7 @@ const Navbar = () => {
   const {
     state: { allImages, scrollPosition, scrollingUp },
   } = useGlobalContext();
-  console.log(scrollingUp);
+
   if (!allImages || (allImages && Object.keys(allImages).length < 1))
     return <div></div>;
   else {
@@ -26,7 +26,7 @@ const Navbar = () => {
             />
           </div>
           <h1 className=" text-textDrk md:text-2xl lg:text-3xl ">
-            Icha<span className=" text-accent ">Codes</span>
+            Icha<span className=" text-accentHover ">Codes</span>
           </h1>
         </Link>
         <div className="navbar-link-container animate-projectEnter">
@@ -42,7 +42,7 @@ const Navbar = () => {
             </div>
           </a>
           <a
-            href="https://ww w.linkedin.com/in/riza-hariati-2021/"
+            href="https://id.linkedin.com/in/riza-hariati-2021"
             className="icon-img"
           >
             <div className="icon-btn">

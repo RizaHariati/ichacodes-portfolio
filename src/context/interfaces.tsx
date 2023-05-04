@@ -7,4 +7,5 @@ export interface AppState {
   scrollPosition: number;
   indexPage: number;
   openModal: ShowModalType;
+  oldIndexNumber?: number | null;
 }

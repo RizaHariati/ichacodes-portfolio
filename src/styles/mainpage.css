@@ -36,14 +36,14 @@
   }
 
   .welcome-container {
-    @apply mx-auto h-5/6 2xl:h-3/4 grid grid-cols-1 grid-rows-2 sm:grid-cols-11  sm:grid-rows-1 bg-fillDrkSolid pt-16 gap-2 rounded-b-lg overflow-hidden transition-all  mb-3;
+    @apply mx-auto h-5/6 2xl:h-3/4 grid grid-cols-1 grid-rows-2 sm:grid-cols-11  sm:grid-rows-1 bg-fillDrkSolid pt-16 gap-2 rounded-b-lg overflow-hidden transition-all  mb-3 shadow-md;
   }
   .main-page-image-container {
     @apply h-fit sm:h-full w-fit col-span-1 sm:col-span-2 transition-all animate-mainImageX;
   }
   .main-page-image {
     max-height: 500px;
-    @apply w-52 h-52 md:w-64 md:h-80 lg:h-full overflow-hidden object-cover transition-all rounded-none rounded-r-md shadow-md;
+    @apply w-52 h-52 md:w-64 md:h-80 lg:h-full overflow-hidden object-cover transition-all rounded-none rounded-r-md shadow-md shadow-textMed;
   }
   .main-page-text {
     @apply h-full w-full col-span-1 sm:col-span-8 sm:col-start-4
@@ -57,7 +57,7 @@
     @apply w-full max-w-6xl grid grid-cols-4 h-14 sm:h-16 2xl:h-20 place-items-center;
   }
   .pb-line {
-    @apply w-full h-full col-start-2 border-r-4 border-textLit;
+    @apply w-full h-full col-start-2 border-r-4 border-button;
   }
 
   .project-info-container {
@@ -68,11 +68,11 @@
     @apply flex flex-col sm:flex-row w-full h-full;
   }
   .main-info-text {
-    @apply transition-all text-base text-textLit pb-10;
+    @apply transition-all text-base text-textMed pb-10;
   }
 
   .box-text {
-    @apply border border-accent rounded-sm h-fit px-1;
+    @apply border border-accentHover rounded-sm h-fit px-1 text-textLit;
   }
   .info-detail {
     @apply flex flex-row leading-6 gap-x-2  md:text-base 2xl:text-lg;

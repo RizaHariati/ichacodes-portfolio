@@ -7,4 +7,5 @@ export const initialState: AppState = {
   scrollPosition: 0,
   indexPage: -1,
   openModal: { status: false, value: "" },
+  oldIndexNumber: null,
 };

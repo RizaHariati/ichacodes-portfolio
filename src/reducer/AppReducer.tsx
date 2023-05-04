@@ -23,6 +23,15 @@ export const appReducer = (state: AppState, action: OpenModalAction) => {
       scrollPosition: position,
     };
   }
+
+  if (action.type === "SET_OLD_INDEX") {
+    const oldIndexNumber = action.payload;
+
+    return {
+      ...state,
+      oldIndexNumber,
+    };
+  }
   if (action.type === "SET_SCROLL_UP") {
     return {
       ...state,

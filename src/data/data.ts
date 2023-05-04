@@ -9,9 +9,9 @@ export const projects: ProjectType[] = [
     description: [
       "BayarPlanner is a website that schedules and records daily financial transactions, also calculates data to create simple invoices.",
 
-      "Created using React JS, makes it easier to work with a lot of date-related libraries, such as React DatePicker and DayJS",
+      "Created using React JS, makes it easier to work with a lot of date-related libraries",
 
-      "Even so, the main calendar design is costumed made instead of using a ready-use library, so it can have more flexibility to handle different functions accordingly to activities that may be different each day.",
+      "The main calendar design is costume-made so it can have more flexibility to handle different functions accordingly to different activities each day.",
     ],
     mainProgram: "React.js",
     dependencies:

@@ -10,14 +10,14 @@ export const getHeightCSS = (inputHeight: number) => {
   if (inputHeight >= 460 && inputHeight < 680) {
     return {
       height: inputHeight,
-      project: "project-description-short ",
+      project: "project-description-short",
       mainInfo: "main-info-text leading-5 md:leading-7",
       mainImage: "image-visible",
     };
   } else if (inputHeight >= 680 && inputHeight < 810) {
     return {
       height: inputHeight,
-      project: "project-description-medium ",
+      project: "project-description-medium",
       mainInfo: "main-info-text leading-5 pb-10  md:text-xl md:leading-7 ",
       mainImage: "image-visible sm:h-72",
     };

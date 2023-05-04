@@ -3,7 +3,6 @@ import React, { useEffect, useState } from "react";
 import { useGlobalContext } from "../../context/AppProvider";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTimes } from "@fortawesome/free-solid-svg-icons";
-import Layout from "../layout/Layout";
 
 type Props = {};
 
@@ -54,7 +53,11 @@ const Modal = (props: Props) => {
           {status && value && (
             <div
               className={
-                classModal[getWindowInnerHeart(window.innerHeight)].classSmall
+                classModal[
+                  getWindowInnerHeart(
+                    typeof window !== "undefined" ? window.innerHeight : 700
+                  )
+                ].classSmall
               }
             >
               <div className="small-modal-img animate-newPulse">
@@ -79,7 +82,11 @@ const Modal = (props: Props) => {
           {status && value && (
             <div
               className={
-                classModal[getWindowInnerHeart(window.innerHeight)].classBig
+                classModal[
+                  getWindowInnerHeart(
+                    typeof window !== "undefined" ? window.innerHeight : 700
+                  )
+                ].classBig
               }
             >
               <div className="big-modal-img ">

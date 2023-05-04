@@ -21,8 +21,8 @@ const MainImageInfo = ({ portfolioImage, imageName, evenOdd }: Props) => {
   } = useGlobalContext();
   const imageVisible =
     evenOdd === "odd"
-      ? `${mainImage} sm:order-3 origin-right `
-      : `${mainImage} origin-left`;
+      ? `${mainImage} sm:order-3 origin-right animate-quickPulse`
+      : `${mainImage} origin-left animate-quickPulse`;
 
   if (!allImages || (allImages && Object.keys(allImages).length < 1)) {
     return <div></div>;
@@ -36,8 +36,8 @@ const MainImageInfo = ({ portfolioImage, imageName, evenOdd }: Props) => {
           className="w-full"
         />
         <button
-          className="magnifying-btn"
-          onClick={() => setOpenModal(imageName.slice(0, -8))}
+          className="magnifying-btn animate-pulse"
+          onClick={() => setOpenModal(imageName)}
         >
           <GatsbyImage
             image={allImages["magnifying"]!}

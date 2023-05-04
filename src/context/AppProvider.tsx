@@ -45,9 +45,12 @@ export const AppProvider = ({ children }: Props) => {
   } = useStaticQuery(result);
 
   useEffect(() => {
-    const heightNew = getHeightCSS(window.innerHeight);
-    settextHeight(heightNew);
-  }, [window.innerHeight]);
+    const isBrowser = typeof window !== "undefined";
+    if (isBrowser) {
+      const heightNew = getHeightCSS(window.innerHeight);
+      settextHeight(heightNew);
+    }
+  }, []);
 
   useEffect(() => {
     if (
@@ -126,28 +129,39 @@ export const AppProvider = ({ children }: Props) => {
       payload: value,
     });
   };
+  const setOldIndex = (indexNumber: number) => {
+    dispatch({ type: "SET_OLD_INDEX", payload: indexNumber });
+  };
 
   const handleScroll = (
     e: React.UIEvent<HTMLDivElement, UIEvent>,
     indexPage: number
   ) => {
     e.preventDefault();
-    const childHeight = e.currentTarget.firstElementChild?.clientHeight!;
+    const childHeight =
+      e.currentTarget.firstElementChild?.firstElementChild?.lastElementChild
+        ?.clientHeight!;
     const scrollHeight = e.currentTarget.scrollTop;
+
     const windowHeight = e.currentTarget.clientHeight;
     const scrollTotal = scrollHeight + windowHeight;
 
-    if (scrollTotal <= state.scrollPosition && scrollTotal === windowHeight) {
-      if (indexPage === 0) {
-        navigate(`/`);
-        setScrollingUp();
-      } else if (indexPage > 0) {
-        navigate(`/projects/${projects[indexPage - 1].slug}`);
+    if (scrollTotal <= state.scrollPosition) {
+      setScrollingUp();
+      if (scrollTotal === windowHeight) {
+        if (indexPage === 0) {
+          navigate(`/`);
+          setOldIndex(-1);
+        } else if (indexPage > 0) {
+          navigate(`/projects/${projects[indexPage - 1].slug}`);
+          setOldIndex(indexPage);
+        }
       }
     } else {
       if (scrollTotal >= childHeight - 10 && indexPage < projects.length - 1) {
         setScrollingDown();
         navigate(`/projects/${projects[indexPage + 1].slug}`);
+        setOldIndex(indexPage);
       }
     }
     dispatch({
